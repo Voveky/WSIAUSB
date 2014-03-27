@@ -1,0 +1,1792 @@
+Analysis & Synthesis report for bus_as_cpu
+Sun Jun 22 00:04:31 2008
+Quartus II Version 7.2 Build 151 09/26/2007 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Analysis & Synthesis Source Files Read
+  5. Analysis & Synthesis Resource Usage Summary
+  6. Analysis & Synthesis Resource Utilization by Entity
+  7. Analysis & Synthesis RAM Summary
+  8. State Machine - |bus_as_cpu|e_state
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Source assignments for altsyncram:stack_rtl_0|altsyncram_3se1:auto_generated
+ 15. Parameter Settings for Inferred Entity Instance: altsyncram:stack_rtl_0
+ 16. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2007 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                 ;
++------------------------------------+-----------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sun Jun 22 00:04:31 2008   ;
+; Quartus II Version                 ; 7.2 Build 151 09/26/2007 SJ Web Edition ;
+; Revision Name                      ; bus_as_cpu                              ;
+; Top-level Entity Name              ; bus_as_cpu                              ;
+; Family                             ; Cyclone II                              ;
+; Total logic elements               ; 3,983                                   ;
+;     Total combinational functions  ; 3,983                                   ;
+;     Dedicated logic registers      ; 2,648                                   ;
+; Total registers                    ; 2648                                    ;
+; Total pins                         ; 136                                     ;
+; Total virtual pins                 ; 0                                       ;
+; Total memory bits                  ; 384                                     ;
+; Embedded Multiplier 9-bit elements ; 0                                       ;
+; Total PLLs                         ; 0                                       ;
++------------------------------------+-----------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                            ;
++--------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                         ; Setting            ; Default Value      ;
++--------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                         ; EP2C35F672C6       ;                    ;
+; Top-level entity name                                                          ; bus_as_cpu         ; bus_as_cpu         ;
+; Family name                                                                    ; Cyclone II         ; Stratix II         ;
+; Use Generated Physical Constraints File                                        ; Off                ;                    ;
+; Use smart compilation                                                          ; Off                ; Off                ;
+; Maximum processors allowed for parallel compilation                            ; 1                  ; 1                  ;
+; Restructure Multiplexers                                                       ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                            ; Off                ; Off                ;
+; Preserve fewer node names                                                      ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                      ; Off                ; Off                ;
+; Verilog Version                                                                ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                   ; VHDL93             ; VHDL93             ;
+; State Machine Processing                                                       ; Auto               ; Auto               ;
+; Safe State Machine                                                             ; Off                ; Off                ;
+; Extract Verilog State Machines                                                 ; On                 ; On                 ;
+; Extract VHDL State Machines                                                    ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                              ; Off                ; Off                ;
+; Add Pass-Through Logic to Inferred RAMs                                        ; On                 ; On                 ;
+; Parallel Synthesis                                                             ; Off                ; Off                ;
+; DSP Block Balancing                                                            ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                             ; On                 ; On                 ;
+; Power-Up Don't Care                                                            ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                   ; Off                ; Off                ;
+; Remove Duplicate Registers                                                     ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                           ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                         ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                          ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                           ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                            ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                 ; Off                ; Off                ;
+; Optimization Technique -- Cyclone II/Cyclone III                               ; Balanced           ; Balanced           ;
+; Carry Chain Length -- Stratix/Stratix GX/Cyclone/MAX II/Cyclone II/Cyclone III ; 70                 ; 70                 ;
+; Auto Carry Chains                                                              ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                           ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                          ; Off                ; Off                ;
+; Perform gate-level register retiming                                           ; Off                ; Off                ;
+; Allow register retiming to trade off Tsu/Tco with Fmax                         ; On                 ; On                 ;
+; Auto ROM Replacement                                                           ; On                 ; On                 ;
+; Auto RAM Replacement                                                           ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                  ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                              ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                         ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                              ; Off                ; Off                ;
+; Auto Resource Sharing                                                          ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                             ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                             ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                  ; Off                ; Off                ;
+; Ignore translate_off and synthesis_off directives                              ; Off                ; Off                ;
+; Show Parameter Settings Tables in Synthesis Report                             ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                             ; Off                ; Off                ;
+; Retiming Meta-Stability Register Sequence Length                               ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                                   ; Normal compilation ; Normal compilation ;
+; HDL message level                                                              ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                           ; On                 ; On                 ;
+; Block Design Naming                                                            ; Auto               ; Auto               ;
++--------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                               ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------+
+; bus_as_cpu.vhd                   ; yes             ; User VHDL File               ; C:/Documents and Settings/Administrator/Desktop/CRD/WSIAUSB/bus_as_cpu.vhd                 ;
+; SevenSeg.vhd                     ; yes             ; User VHDL File               ; C:/Documents and Settings/Administrator/Desktop/CRD/WSIAUSB/SevenSeg.vhd                   ;
+; wsiaUSBlib/wsiaUseful.vhd        ; yes             ; User VHDL File               ; C:/Documents and Settings/Administrator/Desktop/CRD/WSIAUSB/wsiaUSBlib/wsiaUseful.vhd      ;
+; wsiaDescriptors.vhd              ; yes             ; User VHDL File               ; C:/Documents and Settings/Administrator/Desktop/CRD/WSIAUSB/wsiausblib/wsiaDescriptors.vhd ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/altsyncram.tdf                                ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/stratix_ram_block.inc                         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/lpm_mux.inc                                   ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/lpm_decode.inc                                ;
+; aglobal72.inc                    ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/aglobal72.inc                                 ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/a_rdenreg.inc                                 ;
+; altrom.inc                       ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/altrom.inc                                    ;
+; altram.inc                       ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/altram.inc                                    ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/altdpram.inc                                  ;
+; altqpram.inc                     ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/altqpram.inc                                  ;
+; db/altsyncram_3se1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Documents and Settings/Administrator/Desktop/CRD/WSIAUSB/db/altsyncram_3se1.tdf         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary            ;
++---------------------------------------------+----------+
+; Resource                                    ; Usage    ;
++---------------------------------------------+----------+
+; Estimated Total logic elements              ; 3,983    ;
+;                                             ;          ;
+; Total combinational functions               ; 3983     ;
+; Logic element usage by number of LUT inputs ;          ;
+;     -- 4 input functions                    ; 3002     ;
+;     -- 3 input functions                    ; 453      ;
+;     -- <=2 input functions                  ; 528      ;
+;                                             ;          ;
+; Logic elements by mode                      ;          ;
+;     -- normal mode                          ; 3622     ;
+;     -- arithmetic mode                      ; 361      ;
+;                                             ;          ;
+; Total registers                             ; 2648     ;
+;     -- Dedicated logic registers            ; 2648     ;
+;     -- I/O registers                        ; 0        ;
+;                                             ;          ;
+; I/O pins                                    ; 136      ;
+; Total memory bits                           ; 384      ;
+; Maximum fan-out node                        ; CLOCK_25 ;
+; Maximum fan-out                             ; 2660     ;
+; Total fan-out                               ; 22611    ;
+; Average fan-out                             ; 3.34     ;
++---------------------------------------------+----------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                   ;
++----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                               ; Library Name ;
++----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------+--------------+
+; |bus_as_cpu                            ; 3983 (3927)       ; 2648 (2648)  ; 384         ; 0            ; 0       ; 0         ; 136  ; 0            ; |bus_as_cpu                                                       ; work         ;
+;    |SevenSeg:Hexx0|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |bus_as_cpu|SevenSeg:Hexx0                                        ; work         ;
+;    |SevenSeg:Hexx1|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |bus_as_cpu|SevenSeg:Hexx1                                        ; work         ;
+;    |SevenSeg:Hexx2|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |bus_as_cpu|SevenSeg:Hexx2                                        ; work         ;
+;    |SevenSeg:Hexx3|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |bus_as_cpu|SevenSeg:Hexx3                                        ; work         ;
+;    |SevenSeg:Hexx4|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |bus_as_cpu|SevenSeg:Hexx4                                        ; work         ;
+;    |SevenSeg:Hexx5|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |bus_as_cpu|SevenSeg:Hexx5                                        ; work         ;
+;    |SevenSeg:Hexx6|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |bus_as_cpu|SevenSeg:Hexx6                                        ; work         ;
+;    |SevenSeg:Hexx7|                    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |bus_as_cpu|SevenSeg:Hexx7                                        ; work         ;
+;    |altsyncram:stack_rtl_0|            ; 0 (0)             ; 0 (0)        ; 384         ; 0            ; 0       ; 0         ; 0    ; 0            ; |bus_as_cpu|altsyncram:stack_rtl_0                                ; work         ;
+;       |altsyncram_3se1:auto_generated| ; 0 (0)             ; 0 (0)        ; 384         ; 0            ; 0       ; 0         ; 0    ; 0            ; |bus_as_cpu|altsyncram:stack_rtl_0|altsyncram_3se1:auto_generated ; work         ;
++----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                     ;
++------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; Name                                                             ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF  ;
++------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; altsyncram:stack_rtl_0|altsyncram_3se1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 32           ; 12           ; 32           ; 12           ; 384  ; None ;
++------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------+
+; State Machine - |bus_as_cpu|e_state                                         ;
++--------------------+--------------------+-----------------+-----------------+
+; Name               ; e_state.configured ; e_state.address ; e_state.default ;
++--------------------+--------------------+-----------------+-----------------+
+; e_state.default    ; 0                  ; 0               ; 0               ;
+; e_state.address    ; 0                  ; 1               ; 1               ;
+; e_state.configured ; 1                  ; 0               ; 1               ;
++--------------------+--------------------+-----------------+-----------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                   ;
++-----------------------------------------------------------------------------+----------------------------------------+
+; Register name                                                               ; Reason for Removal                     ;
++-----------------------------------------------------------------------------+----------------------------------------+
+; LEDG[2]~reg0                                                                ; Stuck at VCC due to stuck port data_in ;
+; OTG_DATA[1]~en                                                              ; Merged with OTG_DATA[0]~en             ;
+; OTG_DATA[2]~en                                                              ; Merged with OTG_DATA[0]~en             ;
+; OTG_DATA[3]~en                                                              ; Merged with OTG_DATA[0]~en             ;
+; OTG_DATA[4]~en                                                              ; Merged with OTG_DATA[0]~en             ;
+; OTG_DATA[5]~en                                                              ; Merged with OTG_DATA[0]~en             ;
+; OTG_DATA[6]~en                                                              ; Merged with OTG_DATA[0]~en             ;
+; OTG_DATA[7]~en                                                              ; Merged with OTG_DATA[0]~en             ;
+; OTG_DATA[8]~en                                                              ; Merged with OTG_DATA[0]~en             ;
+; OTG_DATA[9]~en                                                              ; Merged with OTG_DATA[0]~en             ;
+; OTG_DATA[10]~en                                                             ; Merged with OTG_DATA[0]~en             ;
+; OTG_DATA[11]~en                                                             ; Merged with OTG_DATA[0]~en             ;
+; OTG_DATA[12]~en                                                             ; Merged with OTG_DATA[0]~en             ;
+; OTG_DATA[13]~en                                                             ; Merged with OTG_DATA[0]~en             ;
+; OTG_DATA[14]~en                                                             ; Merged with OTG_DATA[0]~en             ;
+; OTG_DATA[15]~en                                                             ; Merged with OTG_DATA[0]~en             ;
+; w_buffer64[374,381,401,407,426..428,431..432,435,437..438,440..441,443,448] ; Merged with w_buffer64[368]            ;
+; w_buffer64[375,385..386,466]                                                ; Merged with w_buffer64[369]            ;
+; w_buffer64[422..423,450..451,482]                                           ; Merged with w_buffer64[370]            ;
+; w_buffer64[433..434,449]                                                    ; Merged with w_buffer64[371]            ;
+; w_buffer64[378,382,392..393,424..425,484,488..489]                          ; Merged with w_buffer64[372]            ;
+; w_buffer64[387,402,417,454,465]                                             ; Merged with w_buffer64[373]            ;
+; w_buffer64[388,409..410,412,416,458,460,462,464,468..470]                   ; Merged with w_buffer64[376]            ;
+; w_buffer64[379,394..396,406,408,418,420..421,430,452,480..481,483,491..494] ; Merged with w_buffer64[377]            ;
+; w_buffer64[384,398,403..404,411,413,429,436,442,444,457,459,467,490]        ; Merged with w_buffer64[380]            ;
+; w_buffer64[445..447,456]                                                    ; Merged with w_buffer64[383]            ;
+; w_buffer64[471]                                                             ; Merged with w_buffer64[389]            ;
+; w_buffer64[419]                                                             ; Merged with w_buffer64[390]            ;
+; w_buffer64[453,478..479,485..486,495]                                       ; Merged with w_buffer64[391]            ;
+; w_buffer64[399..400,405,415,455,461,463]                                    ; Merged with w_buffer64[397]            ;
+; w_buffer64[472..477]                                                        ; Merged with w_buffer64[414]            ;
+; w_data32[24][0]                                                             ; Merged with w_data32[30][1]            ;
+; w_data32[29][9]                                                             ; Merged with w_data32[30][1]            ;
+; w_data32[29][8]                                                             ; Merged with w_data32[30][1]            ;
+; w_data32[30][8]                                                             ; Merged with w_data32[30][1]            ;
+; w_data32[28][2]                                                             ; Merged with w_data32[30][1]            ;
+; w_data32[30][2]                                                             ; Merged with w_data32[30][1]            ;
+; w_data32[23][3]                                                             ; Merged with w_data32[30][3]            ;
+; w_data32[24][15]                                                            ; Merged with w_data32[30][3]            ;
+; w_data32[26][15]                                                            ; Merged with w_data32[30][3]            ;
+; w_data32[30][15]                                                            ; Merged with w_data32[30][3]            ;
+; w_data32[23][9]                                                             ; Merged with w_data32[30][3]            ;
+; w_data32[23][13]                                                            ; Merged with w_data32[30][3]            ;
+; w_data32[24][14]                                                            ; Merged with w_data32[30][3]            ;
+; w_data32[26][14]                                                            ; Merged with w_data32[30][3]            ;
+; w_data32[30][14]                                                            ; Merged with w_data32[30][3]            ;
+; w_data32[23][14]                                                            ; Merged with w_data32[30][4]            ;
+; w_data32[26][5]                                                             ; Merged with w_data32[30][4]            ;
+; w_data32[26][3]                                                             ; Merged with w_data32[30][4]            ;
+; w_data32[30][7]                                                             ; Merged with w_data32[30][4]            ;
+; w_data32[26][2]                                                             ; Merged with w_data32[30][4]            ;
+; w_data32[30][6]                                                             ; Merged with w_data32[30][4]            ;
+; w_data32[30][12]                                                            ; Merged with w_data32[30][4]            ;
+; w_data32[25][15]                                                            ; Merged with w_data32[30][4]            ;
+; w_data32[30][11]                                                            ; Merged with w_data32[30][4]            ;
+; w_data32[24][13]                                                            ; Merged with w_data32[30][4]            ;
+; w_data32[30][10]                                                            ; Merged with w_data32[30][4]            ;
+; w_data32[30][9]                                                             ; Merged with w_data32[30][4]            ;
+; w_data32[25][1]                                                             ; Merged with w_data32[30][4]            ;
+; w_data32[28][3]                                                             ; Merged with w_data32[30][4]            ;
+; w_data32[24][12]                                                            ; Merged with w_data32[30][4]            ;
+; w_data32[23][12]                                                            ; Merged with w_data32[30][4]            ;
+; w_data32[26][9]                                                             ; Merged with w_data32[30][4]            ;
+; w_data32[24][11]                                                            ; Merged with w_data32[30][4]            ;
+; w_data32[23][5]                                                             ; Merged with w_data32[30][5]            ;
+; w_data32[28][5]                                                             ; Merged with w_data32[30][5]            ;
+; w_data32[28][4]                                                             ; Merged with w_data32[30][5]            ;
+; w_data32[26][1]                                                             ; Merged with w_data32[30][5]            ;
+; w_data32[26][0]                                                             ; Merged with w_data32[30][5]            ;
+; w_data32[23][11]                                                            ; Merged with w_data32[30][13]           ;
+; w_data32[28][14]                                                            ; Merged with w_data32[30][13]           ;
+; w_data32[28][12]                                                            ; Merged with w_data32[30][13]           ;
+; w_data32[25][12]                                                            ; Merged with w_data32[30][13]           ;
+; w_data32[25][3]                                                             ; Merged with w_data32[30][13]           ;
+; w_data32[26][10]                                                            ; Merged with w_data32[30][13]           ;
+; w_data32[24][7]                                                             ; Merged with w_data32[30][13]           ;
+; w_data32[24][9]                                                             ; Merged with w_data32[30][13]           ;
+; w_data32[27][3]                                                             ; Merged with w_data32[30][13]           ;
+; w_data32[25][10]                                                            ; Merged with w_data32[30][13]           ;
+; w_data32[27][13]                                                            ; Merged with w_data32[30][13]           ;
+; w_data32[29][4]                                                             ; Merged with w_data32[30][13]           ;
+; w_data32[27][11]                                                            ; Merged with w_data32[30][13]           ;
+; w_data32[25][4]                                                             ; Merged with w_data32[30][13]           ;
+; w_data32[24][2]                                                             ; Merged with w_data32[29][0]            ;
+; w_data32[23][15]                                                            ; Merged with w_data32[29][1]            ;
+; w_data32[29][2]                                                             ; Merged with w_data32[29][1]            ;
+; w_data32[25][14]                                                            ; Merged with w_data32[29][1]            ;
+; w_data32[28][13]                                                            ; Merged with w_data32[29][1]            ;
+; w_data32[25][13]                                                            ; Merged with w_data32[29][1]            ;
+; w_data32[28][11]                                                            ; Merged with w_data32[29][1]            ;
+; w_data32[28][9]                                                             ; Merged with w_data32[29][1]            ;
+; w_data32[25][11]                                                            ; Merged with w_data32[29][1]            ;
+; w_data32[29][7]                                                             ; Merged with w_data32[29][1]            ;
+; w_data32[29][3]                                                             ; Merged with w_data32[29][1]            ;
+; w_data32[24][3]                                                             ; Merged with w_data32[29][1]            ;
+; w_data32[26][7]                                                             ; Merged with w_data32[29][1]            ;
+; w_data32[23][6]                                                             ; Merged with w_data32[29][5]            ;
+; w_data32[24][6]                                                             ; Merged with w_data32[29][5]            ;
+; w_data32[24][5]                                                             ; Merged with w_data32[29][5]            ;
+; w_data32[23][0]                                                             ; Merged with w_data32[29][5]            ;
+; Total Number of Removed Registers = 1029                                    ;                                        ;
++-----------------------------------------------------------------------------+----------------------------------------+
+* Table truncated at 100 items. To change the number of removed registers reported, set the "Number of Removed Registers Reported" option under Assignments->Settings->Analysis and Synthesis Settings->More Settings
+
+
++--------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                          ;
++-----------------+---------------------------+----------------------------------------+
+; Register name   ; Reason for Removal        ; Registers Removed due to This Register ;
++-----------------+---------------------------+----------------------------------------+
+; w_buffer64[368] ; Stuck at GND              ; w_data32[30][3]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[496] ; Stuck at GND              ; w_data32[31][1]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[389] ; Stuck at VCC              ; w_data32[30][0]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[498] ; Stuck at VCC              ; w_data32[31][0]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[180] ; Stuck at GND              ; w_data32[11][3]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[212] ; Stuck at GND              ; w_data32[13][3]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[244] ; Stuck at GND              ; w_data32[15][3]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[260] ; Stuck at GND              ; w_data32[16][3]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[276] ; Stuck at GND              ; w_data32[17][3]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[292] ; Stuck at GND              ; w_data32[18][3]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[308] ; Stuck at GND              ; w_data32[19][3]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[340] ; Stuck at GND              ; w_data32[21][3]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[213] ; Stuck at GND              ; w_data32[13][2]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[245] ; Stuck at GND              ; w_data32[15][2]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[261] ; Stuck at GND              ; w_data32[16][2]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[309] ; Stuck at GND              ; w_data32[19][2]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[325] ; Stuck at GND              ; w_data32[20][2]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[310] ; Stuck at GND              ; w_data32[19][1]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[326] ; Stuck at GND              ; w_data32[20][1]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[342] ; Stuck at GND              ; w_data32[21][1]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[167] ; Stuck at GND              ; w_data32[10][0]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[311] ; Stuck at GND              ; w_data32[19][0]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[144] ; Stuck at GND              ; w_data32[9][7]                         ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[160] ; Stuck at GND              ; w_data32[10][7]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[176] ; Stuck at GND              ; w_data32[11][7]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[208] ; Stuck at GND              ; w_data32[13][7]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[224] ; Stuck at GND              ; w_data32[14][7]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[240] ; Stuck at GND              ; w_data32[15][7]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[256] ; Stuck at GND              ; w_data32[16][7]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[272] ; Stuck at GND              ; w_data32[17][7]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[304] ; Stuck at GND              ; w_data32[19][7]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[320] ; Stuck at GND              ; w_data32[20][7]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[336] ; Stuck at GND              ; w_data32[21][7]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[352] ; Stuck at GND              ; w_data32[22][7]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[337] ; Stuck at GND              ; w_data32[21][6]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[322] ; Stuck at GND              ; w_data32[20][5]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[354] ; Stuck at GND              ; w_data32[22][5]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[307] ; Stuck at GND              ; w_data32[19][4]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[323] ; Stuck at GND              ; w_data32[20][4]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[339] ; Stuck at GND              ; w_data32[21][4]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[355] ; Stuck at GND              ; w_data32[22][4]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[172] ; Stuck at GND              ; w_data32[10][11]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[220] ; Stuck at GND              ; w_data32[13][11]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[236] ; Stuck at GND              ; w_data32[14][11]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[252] ; Stuck at GND              ; w_data32[15][11]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[268] ; Stuck at GND              ; w_data32[16][11]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[284] ; Stuck at GND              ; w_data32[17][11]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[316] ; Stuck at GND              ; w_data32[19][11]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[348] ; Stuck at GND              ; w_data32[21][11]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[364] ; Stuck at GND              ; w_data32[22][11]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[173] ; Stuck at GND              ; w_data32[10][10]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[237] ; Stuck at GND              ; w_data32[14][10]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[269] ; Stuck at GND              ; w_data32[16][10]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[317] ; Stuck at GND              ; w_data32[19][10]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[349] ; Stuck at GND              ; w_data32[21][10]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[365] ; Stuck at GND              ; w_data32[22][10]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[174] ; Stuck at GND              ; w_data32[10][9]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[254] ; Stuck at GND              ; w_data32[15][9]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[270] ; Stuck at GND              ; w_data32[16][9]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[286] ; Stuck at GND              ; w_data32[17][9]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[303] ; Stuck at GND              ; w_data32[18][8]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[319] ; Stuck at GND              ; w_data32[19][8]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[367] ; Stuck at GND              ; w_data32[22][8]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[152] ; Stuck at GND              ; w_data32[9][15]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[168] ; Stuck at GND              ; w_data32[10][15]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[216] ; Stuck at GND              ; w_data32[13][15]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[232] ; Stuck at GND              ; w_data32[14][15]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[248] ; Stuck at GND              ; w_data32[15][15]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[264] ; Stuck at GND              ; w_data32[16][15]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[280] ; Stuck at GND              ; w_data32[17][15]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[296] ; Stuck at GND              ; w_data32[18][15]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[312] ; Stuck at GND              ; w_data32[19][15]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[328] ; Stuck at GND              ; w_data32[20][15]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[344] ; Stuck at GND              ; w_data32[21][15]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[360] ; Stuck at GND              ; w_data32[22][15]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[169] ; Stuck at GND              ; w_data32[10][14]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[233] ; Stuck at GND              ; w_data32[14][14]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[218] ; Stuck at GND              ; w_data32[13][13]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[298] ; Stuck at GND              ; w_data32[18][13]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[314] ; Stuck at GND              ; w_data32[19][13]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[155] ; Stuck at GND              ; w_data32[9][12]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[171] ; Stuck at GND              ; w_data32[10][12]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[251] ; Stuck at GND              ; w_data32[15][12]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[267] ; Stuck at GND              ; w_data32[16][12]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[299] ; Stuck at GND              ; w_data32[18][12]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[331] ; Stuck at GND              ; w_data32[20][12]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[347] ; Stuck at GND              ; w_data32[21][12]                       ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[84]  ; Stuck at GND              ; w_data32[5][3]                         ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[100] ; Stuck at GND              ; w_data32[6][3]                         ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[16]  ; Stuck at GND              ; w_data32[1][7]                         ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[64]  ; Stuck at GND              ; w_data32[4][7]                         ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[80]  ; Stuck at GND              ; w_data32[5][7]                         ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[28]  ; Stuck at GND              ; w_data32[1][11]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[60]  ; Stuck at GND              ; w_data32[3][11]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[92]  ; Stuck at GND              ; w_data32[5][11]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[61]  ; Stuck at GND              ; w_data32[3][10]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[63]  ; Stuck at GND              ; w_data32[3][8]                         ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[111] ; Stuck at GND              ; w_data32[6][8]                         ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[24]  ; Stuck at GND              ; w_data32[1][15]                        ;
+;                 ; due to stuck port data_in ;                                        ;
+; w_buffer64[72]  ; Stuck at GND              ; w_data32[4][15]                        ;
+;                 ; due to stuck port data_in ;                                        ;
++-----------------+---------------------------+----------------------------------------+
+* Table truncated at 100 items. To change the number of removed registers reported, set the "Number of Removed Registers Reported" option under Assignments->Settings->Analysis and Synthesis Settings->More Settings
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 2648  ;
+; Number of registers using Synchronous Clear  ; 67    ;
+; Number of registers using Synchronous Load   ; 93    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 2428  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; w_count[0]                             ; 127     ;
+; w_count[31]                            ; 8       ;
+; Total number of inverted registers = 2 ;         ;
++----------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
+; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |bus_as_cpu|LEDR[10]~reg0                  ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |bus_as_cpu|LEDR[3]~reg0                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |bus_as_cpu|OTG_DcInterruptEnable[13]      ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |bus_as_cpu|OTG_DcHardwareConfiguration[7] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |bus_as_cpu|OTG_DcMode[0]                  ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |bus_as_cpu|segs2[6]                       ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |bus_as_cpu|segs2[4]                       ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |bus_as_cpu|segs2[0]                       ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 5 LEs                ; 10 LEs                 ; Yes        ; |bus_as_cpu|IP_H_V_num[1]                  ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |bus_as_cpu|what_config[0]                 ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |bus_as_cpu|which_interface[6]             ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |bus_as_cpu|nEBX[0]                        ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |bus_as_cpu|w_buffer64[496]                ;
+; 6:1                ; 16 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |bus_as_cpu|nECX[0]                        ;
+; 10:1               ; 30 bits   ; 180 LEs       ; 30 LEs               ; 150 LEs                ; Yes        ; |bus_as_cpu|w_count[5]                     ;
+; 11:1               ; 4 bits    ; 28 LEs        ; 4 LEs                ; 24 LEs                 ; Yes        ; |bus_as_cpu|w_buffer64[389]                ;
+; 267:1              ; 64 bits   ; 11392 LEs     ; 128 LEs              ; 11264 LEs              ; Yes        ; |bus_as_cpu|w_buffer64[365]                ;
+; 267:1              ; 8 bits    ; 1424 LEs      ; 16 LEs               ; 1408 LEs               ; Yes        ; |bus_as_cpu|w_buffer64[299]                ;
+; 519:1              ; 73 bits   ; 25258 LEs     ; 146 LEs              ; 25112 LEs              ; Yes        ; |bus_as_cpu|w_buffer64[171]                ;
+; 521:1              ; 44 bits   ; 15268 LEs     ; 88 LEs               ; 15180 LEs              ; Yes        ; |bus_as_cpu|w_buffer64[194]                ;
+; 521:1              ; 13 bits   ; 4511 LEs      ; 26 LEs               ; 4485 LEs               ; Yes        ; |bus_as_cpu|w_buffer64[259]                ;
+; 521:1              ; 14 bits   ; 4858 LEs      ; 28 LEs               ; 4830 LEs               ; Yes        ; |bus_as_cpu|w_buffer64[275]                ;
+; 522:1              ; 8 bits    ; 2784 LEs      ; 16 LEs               ; 2768 LEs               ; Yes        ; |bus_as_cpu|w_buffer64[291]                ;
+; 520:1              ; 10 bits   ; 3460 LEs      ; 20 LEs               ; 3440 LEs               ; Yes        ; |bus_as_cpu|w_buffer64[23]                 ;
+; 520:1              ; 53 bits   ; 18338 LEs     ; 106 LEs              ; 18232 LEs              ; Yes        ; |bus_as_cpu|w_buffer64[132]                ;
+; 66:1               ; 7 bits    ; 308 LEs       ; 308 LEs              ; 0 LEs                  ; Yes        ; |bus_as_cpu|segs3[3]                       ;
+; 522:1              ; 5 bits    ; 1740 LEs      ; 20 LEs               ; 1720 LEs               ; Yes        ; |bus_as_cpu|w_buffer64[17]                 ;
+; 522:1              ; 38 bits   ; 13224 LEs     ; 114 LEs              ; 13110 LEs              ; Yes        ; |bus_as_cpu|w_buffer64[49]                 ;
+; 522:1              ; 7 bits    ; 2436 LEs      ; 21 LEs               ; 2415 LEs               ; Yes        ; |bus_as_cpu|w_buffer64[87]                 ;
+; 522:1              ; 14 bits   ; 4872 LEs      ; 42 LEs               ; 4830 LEs               ; Yes        ; |bus_as_cpu|w_buffer64[129]                ;
+; 60:1               ; 4 bits    ; 160 LEs       ; 156 LEs              ; 4 LEs                  ; Yes        ; |bus_as_cpu|segs1[13]                      ;
+; 61:1               ; 2 bits    ; 80 LEs        ; 78 LEs               ; 2 LEs                  ; Yes        ; |bus_as_cpu|segs1[3]                       ;
+; 781:1              ; 7 bits    ; 3640 LEs      ; 21 LEs               ; 3619 LEs               ; Yes        ; |bus_as_cpu|w_buffer64[9]                  ;
+; 784:1              ; 6 bits    ; 3132 LEs      ; 30 LEs               ; 3102 LEs               ; Yes        ; |bus_as_cpu|w_buffer64[3]                  ;
+; 290:1              ; 4 bits    ; 772 LEs       ; 48 LEs               ; 724 LEs                ; Yes        ; |bus_as_cpu|IP_JMP[7]                      ;
+; 793:1              ; 13 bits   ; 6864 LEs      ; 78 LEs               ; 6786 LEs               ; Yes        ; |bus_as_cpu|w_length[12]                   ;
+; 795:1              ; 2 bits    ; 1060 LEs      ; 10 LEs               ; 1050 LEs               ; Yes        ; |bus_as_cpu|w_length[6]                    ;
+; 1053:1             ; 8 bits    ; 5616 LEs      ; 72 LEs               ; 5544 LEs               ; Yes        ; |bus_as_cpu|nEAX[8]                        ;
+; 340:1              ; 5 bits    ; 1130 LEs      ; 10 LEs               ; 1120 LEs               ; Yes        ; |bus_as_cpu|SP_NEXT[4]                     ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 2 LEs                ; 10 LEs                 ; Yes        ; |bus_as_cpu|w_count[0]                     ;
+; 26:1               ; 4 bits    ; 68 LEs        ; 68 LEs               ; 0 LEs                  ; Yes        ; |bus_as_cpu|OTG_DATA[11]~reg0              ;
+; 27:1               ; 2 bits    ; 36 LEs        ; 34 LEs               ; 2 LEs                  ; Yes        ; |bus_as_cpu|OTG_DATA[3]~reg0               ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |bus_as_cpu|IP_JMP~23                      ;
+; 103:1              ; 5 bits    ; 340 LEs       ; 0 LEs                ; 340 LEs                ; No         ; |bus_as_cpu|Selector130                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
+
+
++------------------------------------------------------------------------------+
+; Source assignments for altsyncram:stack_rtl_0|altsyncram_3se1:auto_generated ;
++---------------------------------+--------------------+------+----------------+
+; Assignment                      ; Value              ; From ; To             ;
++---------------------------------+--------------------+------+----------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -              ;
++---------------------------------+--------------------+------+----------------+
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: altsyncram:stack_rtl_0    ;
++------------------------------------+----------------------+----------------+
+; Parameter Name                     ; Value                ; Type           ;
++------------------------------------+----------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped        ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped        ;
+; WIDTH_A                            ; 12                   ; Untyped        ;
+; WIDTHAD_A                          ; 5                    ; Untyped        ;
+; NUMWORDS_A                         ; 32                   ; Untyped        ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped        ;
+; WIDTH_B                            ; 12                   ; Untyped        ;
+; WIDTHAD_B                          ; 5                    ; Untyped        ;
+; NUMWORDS_B                         ; 32                   ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped        ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped        ;
+; BYTE_SIZE                          ; 8                    ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped        ;
+; INIT_FILE                          ; UNUSED               ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                ; Untyped        ;
+; DEVICE_FAMILY                      ; Cyclone II           ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_3se1      ; Untyped        ;
++------------------------------------+----------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Analysis & Synthesis
+    Info: Version 7.2 Build 151 09/26/2007 SJ Web Edition
+    Info: Processing started: Sun Jun 22 00:00:22 2008
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off bus_as_cpu -c bus_as_cpu
+Info: Found 2 design units, including 1 entities, in source file bus_as_cpu.vhd
+    Info: Found design unit 1: bus_as_cpu-handler
+    Info: Found entity 1: bus_as_cpu
+Info: Found 2 design units, including 1 entities, in source file SevenSeg.vhd
+    Info: Found design unit 1: SevenSeg-putOut
+    Info: Found entity 1: SevenSeg
+Info: Found 2 design units, including 0 entities, in source file wsiaUSBlib/wsiaUseful.vhd
+    Info: Found design unit 1: wsiaUseful
+    Info: Found design unit 2: wsiaUseful-body
+Info: Found 2 design units, including 0 entities, in source file wsiausblib/wsiaDescriptors.vhd
+    Info: Found design unit 1: wsiaDescriptors
+    Info: Found design unit 2: wsiaDescriptors-body
+Info: Elaborating entity "bus_as_cpu" for the top level hierarchy
+Warning (10541): VHDL Signal Declaration warning at bus_as_cpu.vhd(99): used implicit default value for signal "OTG_DcAddress" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10036): Verilog HDL or VHDL warning at bus_as_cpu.vhd(115): object "w_done" assigned a value but never read
+Warning (10540): VHDL Signal Declaration warning at bus_as_cpu.vhd(126): used explicit default value for signal "EP2_Buffer" because signal was never assigned a value
+Warning (10036): Verilog HDL or VHDL warning at bus_as_cpu.vhd(128): object "EP3_Buff" assigned a value but never read
+Warning (10541): VHDL Signal Declaration warning at bus_as_cpu.vhd(129): used implicit default value for signal "EP4_Buffer" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10034): Output port "LEDG[6]" at bus_as_cpu.vhd(65) has no driver
+Warning (10034): Output port "LEDG[5]" at bus_as_cpu.vhd(65) has no driver
+Warning (10034): Output port "LEDG[4]" at bus_as_cpu.vhd(65) has no driver
+Warning (10034): Output port "LEDG[3]" at bus_as_cpu.vhd(65) has no driver
+Info: Elaborating entity "SevenSeg" for hierarchy "SevenSeg:Hexx0"
+Info: Power-up level of register "LEDG[2]~reg0" is not specified -- using power-up level of High to minimize register
+Warning (14130): Reduced register "LEDG[2]~reg0" with stuck data_in port to stuck value VCC
+Info: Duplicate registers merged to single register
+    Info: Duplicate register "OTG_DATA[1]~en" merged to single register "OTG_DATA[0]~en"
+    Info: Duplicate register "OTG_DATA[2]~en" merged to single register "OTG_DATA[0]~en"
+    Info: Duplicate register "OTG_DATA[3]~en" merged to single register "OTG_DATA[0]~en"
+    Info: Duplicate register "OTG_DATA[4]~en" merged to single register "OTG_DATA[0]~en"
+    Info: Duplicate register "OTG_DATA[5]~en" merged to single register "OTG_DATA[0]~en"
+    Info: Duplicate register "OTG_DATA[6]~en" merged to single register "OTG_DATA[0]~en"
+    Info: Duplicate register "OTG_DATA[7]~en" merged to single register "OTG_DATA[0]~en"
+    Info: Duplicate register "OTG_DATA[8]~en" merged to single register "OTG_DATA[0]~en"
+    Info: Duplicate register "OTG_DATA[9]~en" merged to single register "OTG_DATA[0]~en"
+    Info: Duplicate register "OTG_DATA[10]~en" merged to single register "OTG_DATA[0]~en"
+    Info: Duplicate register "OTG_DATA[11]~en" merged to single register "OTG_DATA[0]~en"
+    Info: Duplicate register "OTG_DATA[12]~en" merged to single register "OTG_DATA[0]~en"
+    Info: Duplicate register "OTG_DATA[13]~en" merged to single register "OTG_DATA[0]~en"
+    Info: Duplicate register "OTG_DATA[14]~en" merged to single register "OTG_DATA[0]~en"
+    Info: Duplicate register "OTG_DATA[15]~en" merged to single register "OTG_DATA[0]~en"
+Info: Duplicate registers merged to single register
+    Info: Duplicate register "w_buffer64[426]" merged to single register "w_buffer64[368]"
+    Info: Duplicate register "w_buffer64[427]" merged to single register "w_buffer64[368]"
+    Info: Duplicate register "w_buffer64[428]" merged to single register "w_buffer64[368]"
+    Info: Duplicate register "w_buffer64[407]" merged to single register "w_buffer64[368]"
+    Info: Duplicate register "w_buffer64[431]" merged to single register "w_buffer64[368]"
+    Info: Duplicate register "w_buffer64[432]" merged to single register "w_buffer64[368]"
+    Info: Duplicate register "w_buffer64[435]" merged to single register "w_buffer64[368]"
+    Info: Duplicate register "w_buffer64[381]" merged to single register "w_buffer64[368]"
+    Info: Duplicate register "w_buffer64[437]" merged to single register "w_buffer64[368]"
+    Info: Duplicate register "w_buffer64[438]" merged to single register "w_buffer64[368]"
+    Info: Duplicate register "w_buffer64[440]" merged to single register "w_buffer64[368]"
+    Info: Duplicate register "w_buffer64[441]" merged to single register "w_buffer64[368]"
+    Info: Duplicate register "w_buffer64[401]" merged to single register "w_buffer64[368]"
+    Info: Duplicate register "w_buffer64[443]" merged to single register "w_buffer64[368]"
+    Info: Duplicate register "w_buffer64[448]" merged to single register "w_buffer64[368]"
+    Info: Duplicate register "w_buffer64[374]" merged to single register "w_buffer64[368]"
+    Info: Duplicate register "w_buffer64[385]" merged to single register "w_buffer64[369]"
+    Info: Duplicate register "w_buffer64[386]" merged to single register "w_buffer64[369]"
+    Info: Duplicate register "w_buffer64[375]" merged to single register "w_buffer64[369]"
+    Info: Duplicate register "w_buffer64[466]" merged to single register "w_buffer64[369]"
+    Info: Duplicate register "w_buffer64[450]" merged to single register "w_buffer64[370]"
+    Info: Duplicate register "w_buffer64[451]" merged to single register "w_buffer64[370]"
+    Info: Duplicate register "w_buffer64[482]" merged to single register "w_buffer64[370]"
+    Info: Duplicate register "w_buffer64[422]" merged to single register "w_buffer64[370]"
+    Info: Duplicate register "w_buffer64[423]" merged to single register "w_buffer64[370]"
+    Info: Duplicate register "w_buffer64[433]" merged to single register "w_buffer64[371]"
+    Info: Duplicate register "w_buffer64[434]" merged to single register "w_buffer64[371]"
+    Info: Duplicate register "w_buffer64[449]" merged to single register "w_buffer64[371]"
+    Info: Duplicate register "w_buffer64[484]" merged to single register "w_buffer64[372]"
+    Info: Duplicate register "w_buffer64[392]" merged to single register "w_buffer64[372]"
+    Info: Duplicate register "w_buffer64[424]" merged to single register "w_buffer64[372]"
+    Info: Duplicate register "w_buffer64[488]" merged to single register "w_buffer64[372]"
+    Info: Duplicate register "w_buffer64[382]" merged to single register "w_buffer64[372]"
+    Info: Duplicate register "w_buffer64[378]" merged to single register "w_buffer64[372]"
+    Info: Duplicate register "w_buffer64[393]" merged to single register "w_buffer64[372]"
+    Info: Duplicate register "w_buffer64[425]" merged to single register "w_buffer64[372]"
+    Info: Duplicate register "w_buffer64[489]" merged to single register "w_buffer64[372]"
+    Info: Duplicate register "w_buffer64[387]" merged to single register "w_buffer64[373]"
+    Info: Duplicate register "w_buffer64[465]" merged to single register "w_buffer64[373]"
+    Info: Duplicate register "w_buffer64[402]" merged to single register "w_buffer64[373]"
+    Info: Duplicate register "w_buffer64[454]" merged to single register "w_buffer64[373]"
+    Info: Duplicate register "w_buffer64[417]" merged to single register "w_buffer64[373]"
+    Info: Duplicate register "w_buffer64[469]" merged to single register "w_buffer64[376]"
+    Info: Duplicate register "w_buffer64[409]" merged to single register "w_buffer64[376]"
+    Info: Duplicate register "w_buffer64[458]" merged to single register "w_buffer64[376]"
+    Info: Duplicate register "w_buffer64[410]" merged to single register "w_buffer64[376]"
+    Info: Duplicate register "w_buffer64[460]" merged to single register "w_buffer64[376]"
+    Info: Duplicate register "w_buffer64[462]" merged to single register "w_buffer64[376]"
+    Info: Duplicate register "w_buffer64[412]" merged to single register "w_buffer64[376]"
+    Info: Duplicate register "w_buffer64[464]" merged to single register "w_buffer64[376]"
+    Info: Duplicate register "w_buffer64[468]" merged to single register "w_buffer64[376]"
+    Info: Duplicate register "w_buffer64[388]" merged to single register "w_buffer64[376]"
+    Info: Duplicate register "w_buffer64[470]" merged to single register "w_buffer64[376]"
+    Info: Duplicate register "w_buffer64[416]" merged to single register "w_buffer64[376]"
+    Info: Duplicate register "w_buffer64[418]" merged to single register "w_buffer64[377]"
+    Info: Duplicate register "w_buffer64[420]" merged to single register "w_buffer64[377]"
+    Info: Duplicate register "w_buffer64[480]" merged to single register "w_buffer64[377]"
+    Info: Duplicate register "w_buffer64[421]" merged to single register "w_buffer64[377]"
+    Info: Duplicate register "w_buffer64[481]" merged to single register "w_buffer64[377]"
+    Info: Duplicate register "w_buffer64[491]" merged to single register "w_buffer64[377]"
+    Info: Duplicate register "w_buffer64[408]" merged to single register "w_buffer64[377]"
+    Info: Duplicate register "w_buffer64[492]" merged to single register "w_buffer64[377]"
+    Info: Duplicate register "w_buffer64[394]" merged to single register "w_buffer64[377]"
+    Info: Duplicate register "w_buffer64[493]" merged to single register "w_buffer64[377]"
+    Info: Duplicate register "w_buffer64[494]" merged to single register "w_buffer64[377]"
+    Info: Duplicate register "w_buffer64[406]" merged to single register "w_buffer64[377]"
+    Info: Duplicate register "w_buffer64[452]" merged to single register "w_buffer64[377]"
+    Info: Duplicate register "w_buffer64[395]" merged to single register "w_buffer64[377]"
+    Info: Duplicate register "w_buffer64[379]" merged to single register "w_buffer64[377]"
+    Info: Duplicate register "w_buffer64[430]" merged to single register "w_buffer64[377]"
+    Info: Duplicate register "w_buffer64[396]" merged to single register "w_buffer64[377]"
+    Info: Duplicate register "w_buffer64[483]" merged to single register "w_buffer64[377]"
+    Info: Duplicate register "w_buffer64[457]" merged to single register "w_buffer64[380]"
+    Info: Duplicate register "w_buffer64[459]" merged to single register "w_buffer64[380]"
+    Info: Duplicate register "w_buffer64[411]" merged to single register "w_buffer64[380]"
+    Info: Duplicate register "w_buffer64[490]" merged to single register "w_buffer64[380]"
+    Info: Duplicate register "w_buffer64[404]" merged to single register "w_buffer64[380]"
+    Info: Duplicate register "w_buffer64[429]" merged to single register "w_buffer64[380]"
+    Info: Duplicate register "w_buffer64[384]" merged to single register "w_buffer64[380]"
+    Info: Duplicate register "w_buffer64[398]" merged to single register "w_buffer64[380]"
+    Info: Duplicate register "w_buffer64[436]" merged to single register "w_buffer64[380]"
+    Info: Duplicate register "w_buffer64[413]" merged to single register "w_buffer64[380]"
+    Info: Duplicate register "w_buffer64[442]" merged to single register "w_buffer64[380]"
+    Info: Duplicate register "w_buffer64[467]" merged to single register "w_buffer64[380]"
+    Info: Duplicate register "w_buffer64[444]" merged to single register "w_buffer64[380]"
+    Info: Duplicate register "w_buffer64[403]" merged to single register "w_buffer64[380]"
+    Info: Duplicate register "w_buffer64[456]" merged to single register "w_buffer64[383]"
+    Info: Duplicate register "w_buffer64[445]" merged to single register "w_buffer64[383]"
+    Info: Duplicate register "w_buffer64[446]" merged to single register "w_buffer64[383]"
+    Info: Duplicate register "w_buffer64[447]" merged to single register "w_buffer64[383]"
+    Info: Duplicate register "w_buffer64[471]" merged to single register "w_buffer64[389]"
+    Info: Duplicate register "w_buffer64[419]" merged to single register "w_buffer64[390]"
+    Info: Duplicate register "w_buffer64[478]" merged to single register "w_buffer64[391]"
+    Info: Duplicate register "w_buffer64[479]" merged to single register "w_buffer64[391]"
+    Info: Duplicate register "w_buffer64[495]" merged to single register "w_buffer64[391]"
+    Info: Duplicate register "w_buffer64[453]" merged to single register "w_buffer64[391]"
+    Info: Duplicate register "w_buffer64[485]" merged to single register "w_buffer64[391]"
+    Info: Duplicate register "w_buffer64[486]" merged to single register "w_buffer64[391]"
+    Info: Duplicate register "w_buffer64[461]" merged to single register "w_buffer64[397]"
+    Info: Duplicate register "w_buffer64[463]" merged to single register "w_buffer64[397]"
+    Info: Duplicate register "w_buffer64[399]" merged to single register "w_buffer64[397]"
+    Info: Duplicate register "w_buffer64[400]" merged to single register "w_buffer64[397]"
+    Info: Duplicate register "w_buffer64[455]" merged to single register "w_buffer64[397]"
+    Info: Duplicate register "w_buffer64[405]" merged to single register "w_buffer64[397]"
+    Info: Duplicate register "w_buffer64[415]" merged to single register "w_buffer64[397]"
+    Info: Duplicate register "w_buffer64[473]" merged to single register "w_buffer64[414]"
+    Info: Duplicate register "w_buffer64[472]" merged to single register "w_buffer64[414]"
+    Info: Duplicate register "w_buffer64[474]" merged to single register "w_buffer64[414]"
+    Info: Duplicate register "w_buffer64[475]" merged to single register "w_buffer64[414]"
+    Info: Duplicate register "w_buffer64[476]" merged to single register "w_buffer64[414]"
+    Info: Duplicate register "w_buffer64[477]" merged to single register "w_buffer64[414]"
+    Info: Duplicate register "w_data32[24][0]" merged to single register "w_data32[30][1]"
+    Info: Duplicate register "w_data32[29][9]" merged to single register "w_data32[30][1]"
+    Info: Duplicate register "w_data32[29][8]" merged to single register "w_data32[30][1]"
+    Info: Duplicate register "w_data32[30][8]" merged to single register "w_data32[30][1]"
+    Info: Duplicate register "w_data32[28][2]" merged to single register "w_data32[30][1]"
+    Info: Duplicate register "w_data32[30][2]" merged to single register "w_data32[30][1]"
+    Info: Duplicate register "w_data32[23][3]" merged to single register "w_data32[30][3]"
+    Info: Duplicate register "w_data32[24][15]" merged to single register "w_data32[30][3]"
+    Info: Duplicate register "w_data32[26][15]" merged to single register "w_data32[30][3]"
+    Info: Duplicate register "w_data32[30][15]" merged to single register "w_data32[30][3]"
+    Info: Duplicate register "w_data32[23][9]" merged to single register "w_data32[30][3]"
+    Info: Duplicate register "w_data32[23][13]" merged to single register "w_data32[30][3]"
+    Info: Duplicate register "w_data32[24][14]" merged to single register "w_data32[30][3]"
+    Info: Duplicate register "w_data32[26][14]" merged to single register "w_data32[30][3]"
+    Info: Duplicate register "w_data32[30][14]" merged to single register "w_data32[30][3]"
+    Info: Duplicate register "w_data32[23][14]" merged to single register "w_data32[30][4]"
+    Info: Duplicate register "w_data32[26][5]" merged to single register "w_data32[30][4]"
+    Info: Duplicate register "w_data32[26][3]" merged to single register "w_data32[30][4]"
+    Info: Duplicate register "w_data32[30][7]" merged to single register "w_data32[30][4]"
+    Info: Duplicate register "w_data32[26][2]" merged to single register "w_data32[30][4]"
+    Info: Duplicate register "w_data32[30][6]" merged to single register "w_data32[30][4]"
+    Info: Duplicate register "w_data32[30][12]" merged to single register "w_data32[30][4]"
+    Info: Duplicate register "w_data32[25][15]" merged to single register "w_data32[30][4]"
+    Info: Duplicate register "w_data32[30][11]" merged to single register "w_data32[30][4]"
+    Info: Duplicate register "w_data32[24][13]" merged to single register "w_data32[30][4]"
+    Info: Duplicate register "w_data32[30][10]" merged to single register "w_data32[30][4]"
+    Info: Duplicate register "w_data32[30][9]" merged to single register "w_data32[30][4]"
+    Info: Duplicate register "w_data32[25][1]" merged to single register "w_data32[30][4]"
+    Info: Duplicate register "w_data32[28][3]" merged to single register "w_data32[30][4]"
+    Info: Duplicate register "w_data32[24][12]" merged to single register "w_data32[30][4]"
+    Info: Duplicate register "w_data32[23][12]" merged to single register "w_data32[30][4]"
+    Info: Duplicate register "w_data32[26][9]" merged to single register "w_data32[30][4]"
+    Info: Duplicate register "w_data32[24][11]" merged to single register "w_data32[30][4]"
+    Info: Duplicate register "w_data32[23][5]" merged to single register "w_data32[30][5]"
+    Info: Duplicate register "w_data32[28][5]" merged to single register "w_data32[30][5]"
+    Info: Duplicate register "w_data32[28][4]" merged to single register "w_data32[30][5]"
+    Info: Duplicate register "w_data32[26][1]" merged to single register "w_data32[30][5]"
+    Info: Duplicate register "w_data32[26][0]" merged to single register "w_data32[30][5]"
+    Info: Duplicate register "w_data32[23][11]" merged to single register "w_data32[30][13]"
+    Info: Duplicate register "w_data32[28][14]" merged to single register "w_data32[30][13]"
+    Info: Duplicate register "w_data32[28][12]" merged to single register "w_data32[30][13]"
+    Info: Duplicate register "w_data32[25][12]" merged to single register "w_data32[30][13]"
+    Info: Duplicate register "w_data32[25][3]" merged to single register "w_data32[30][13]"
+    Info: Duplicate register "w_data32[26][10]" merged to single register "w_data32[30][13]"
+    Info: Duplicate register "w_data32[24][7]" merged to single register "w_data32[30][13]"
+    Info: Duplicate register "w_data32[24][9]" merged to single register "w_data32[30][13]"
+    Info: Duplicate register "w_data32[27][3]" merged to single register "w_data32[30][13]"
+    Info: Duplicate register "w_data32[25][10]" merged to single register "w_data32[30][13]"
+    Info: Duplicate register "w_data32[27][13]" merged to single register "w_data32[30][13]"
+    Info: Duplicate register "w_data32[29][4]" merged to single register "w_data32[30][13]"
+    Info: Duplicate register "w_data32[27][11]" merged to single register "w_data32[30][13]"
+    Info: Duplicate register "w_data32[25][4]" merged to single register "w_data32[30][13]"
+    Info: Duplicate register "w_data32[24][2]" merged to single register "w_data32[29][0]"
+    Info: Duplicate register "w_data32[23][15]" merged to single register "w_data32[29][1]"
+    Info: Duplicate register "w_data32[29][2]" merged to single register "w_data32[29][1]"
+    Info: Duplicate register "w_data32[25][14]" merged to single register "w_data32[29][1]"
+    Info: Duplicate register "w_data32[28][13]" merged to single register "w_data32[29][1]"
+    Info: Duplicate register "w_data32[25][13]" merged to single register "w_data32[29][1]"
+    Info: Duplicate register "w_data32[28][11]" merged to single register "w_data32[29][1]"
+    Info: Duplicate register "w_data32[28][9]" merged to single register "w_data32[29][1]"
+    Info: Duplicate register "w_data32[25][11]" merged to single register "w_data32[29][1]"
+    Info: Duplicate register "w_data32[29][7]" merged to single register "w_data32[29][1]"
+    Info: Duplicate register "w_data32[29][3]" merged to single register "w_data32[29][1]"
+    Info: Duplicate register "w_data32[24][3]" merged to single register "w_data32[29][1]"
+    Info: Duplicate register "w_data32[26][7]" merged to single register "w_data32[29][1]"
+    Info: Duplicate register "w_data32[23][6]" merged to single register "w_data32[29][5]"
+    Info: Duplicate register "w_data32[24][6]" merged to single register "w_data32[29][5]"
+    Info: Duplicate register "w_data32[24][5]" merged to single register "w_data32[29][5]"
+    Info: Duplicate register "w_data32[23][0]" merged to single register "w_data32[29][5]"
+    Info: Duplicate register "w_data32[23][2]" merged to single register "w_data32[29][6]"
+    Info: Duplicate register "w_data32[24][4]" merged to single register "w_data32[29][6]"
+    Info: Duplicate register "w_data32[25][5]" merged to single register "w_data32[29][6]"
+    Info: Duplicate register "w_data32[28][1]" merged to single register "w_data32[29][6]"
+    Info: Duplicate register "w_data32[26][6]" merged to single register "w_data32[29][6]"
+    Info: Duplicate register "w_data32[25][9]" merged to single register "w_data32[29][10]"
+    Info: Duplicate register "w_data32[29][14]" merged to single register "w_data32[29][10]"
+    Info: Duplicate register "w_data32[29][15]" merged to single register "w_data32[29][10]"
+    Info: Duplicate register "w_data32[29][13]" merged to single register "w_data32[29][10]"
+    Info: Duplicate register "w_data32[29][12]" merged to single register "w_data32[29][10]"
+    Info: Duplicate register "w_data32[29][11]" merged to single register "w_data32[29][10]"
+    Info: Duplicate register "w_data32[24][10]" merged to single register "w_data32[28][0]"
+    Info: Duplicate register "w_data32[28][10]" merged to single register "w_data32[28][0]"
+    Info: Duplicate register "w_data32[28][8]" merged to single register "w_data32[28][0]"
+    Info: Duplicate register "w_data32[24][8]" merged to single register "w_data32[28][0]"
+    Info: Duplicate register "w_data32[25][7]" merged to single register "w_data32[28][0]"
+    Info: Duplicate register "w_data32[25][2]" merged to single register "w_data32[28][0]"
+    Info: Duplicate register "w_data32[25][8]" merged to single register "w_data32[28][0]"
+    Info: Duplicate register "w_data32[23][4]" merged to single register "w_data32[28][6]"
+    Info: Duplicate register "w_data32[27][6]" merged to single register "w_data32[28][6]"
+    Info: Duplicate register "w_data32[27][5]" merged to single register "w_data32[28][6]"
+    Info: Duplicate register "w_data32[23][7]" merged to single register "w_data32[28][7]"
+    Info: Duplicate register "w_data32[26][13]" merged to single register "w_data32[28][7]"
+    Info: Duplicate register "w_data32[26][12]" merged to single register "w_data32[28][7]"
+    Info: Duplicate register "w_data32[26][11]" merged to single register "w_data32[28][7]"
+    Info: Duplicate register "w_data32[25][0]" merged to single register "w_data32[28][7]"
+    Info: Duplicate register "w_data32[26][8]" merged to single register "w_data32[28][7]"
+    Info: Duplicate register "w_data32[27][7]" merged to single register "w_data32[28][7]"
+    Info: Duplicate register "w_data32[27][4]" merged to single register "w_data32[28][7]"
+    Info: Duplicate register "w_data32[23][10]" merged to single register "w_data32[28][7]"
+    Info: Duplicate register "w_data32[27][2]" merged to single register "w_data32[28][7]"
+    Info: Duplicate register "w_data32[27][1]" merged to single register "w_data32[28][7]"
+    Info: Duplicate register "w_data32[27][15]" merged to single register "w_data32[28][7]"
+    Info: Duplicate register "w_data32[27][14]" merged to single register "w_data32[28][7]"
+    Info: Duplicate register "w_data32[25][6]" merged to single register "w_data32[28][7]"
+    Info: Duplicate register "w_data32[27][12]" merged to single register "w_data32[28][7]"
+    Info: Duplicate register "w_data32[23][1]" merged to single register "w_data32[28][7]"
+    Info: Duplicate register "w_data32[23][8]" merged to single register "w_data32[28][15]"
+    Info: Duplicate register "w_data32[27][10]" merged to single register "w_data32[28][15]"
+    Info: Duplicate register "w_data32[27][9]" merged to single register "w_data32[28][15]"
+    Info: Duplicate register "w_data32[27][8]" merged to single register "w_data32[28][15]"
+    Info: Duplicate register "w_data32[24][1]" merged to single register "w_data32[26][4]"
+    Info: Duplicate register "w_buffer64[376]" merged to single register "w_buffer64[368]"
+    Info: Duplicate register "w_buffer64[373]" merged to single register "w_buffer64[371]"
+    Info: Duplicate register "w_buffer64[377]" merged to single register "w_buffer64[372]"
+    Info: Duplicate register "w_buffer64[380]" merged to single register "w_buffer64[372]"
+    Info: Duplicate register "w_buffer64[397]" merged to single register "w_buffer64[383]"
+    Info: Duplicate register "w_buffer64[414]" merged to single register "w_buffer64[383]"
+    Info: Duplicate register "w_buffer64[439]" merged to single register "w_buffer64[389]"
+    Info: Duplicate register "w_data32[30][4]" merged to single register "w_data32[30][3]"
+    Info: Duplicate register "w_data32[30][13]" merged to single register "w_data32[30][3]"
+    Info: Duplicate register "w_data32[27][0]" merged to single register "w_data32[29][0]"
+    Info: Duplicate register "w_data32[28][7]" merged to single register "w_data32[29][1]"
+    Info: Duplicate register "w_data32[28][6]" merged to single register "w_data32[29][6]"
+    Info: Duplicate register "w_data32[28][15]" merged to single register "w_data32[29][10]"
+    Info: Duplicate register "w_data32[28][0]" merged to single register "w_data32[29][10]"
+    Info: Duplicate register "w_buffer64[372]" merged to single register "w_buffer64[368]"
+    Info: Duplicate register "w_buffer64[370]" merged to single register "w_buffer64[369]"
+    Info: Duplicate register "w_buffer64[390]" merged to single register "w_buffer64[389]"
+    Info: Duplicate register "w_buffer64[487]" merged to single register "w_buffer64[389]"
+    Info: Duplicate register "w_data32[29][0]" merged to single register "w_data32[30][0]"
+    Info: Duplicate register "w_data32[26][4]" merged to single register "w_data32[30][0]"
+    Info: Duplicate register "w_data32[29][1]" merged to single register "w_data32[30][3]"
+    Info: Duplicate register "w_data32[29][5]" merged to single register "w_data32[30][5]"
+    Info: Duplicate register "w_buffer64[371]" merged to single register "w_buffer64[369]"
+    Info: Duplicate register "w_buffer64[391]" merged to single register "w_buffer64[383]"
+    Info: Duplicate register "w_data32[29][10]" merged to single register "w_data32[30][1]"
+    Info: Duplicate register "w_data32[29][6]" merged to single register "w_data32[30][5]"
+Info: Duplicate registers merged to single register
+    Info: Duplicate register "w_buffer64[502]" merged to single register "w_buffer64[496]"
+    Info: Duplicate register "w_buffer64[504]" merged to single register "w_buffer64[496]"
+    Info: Duplicate register "w_buffer64[505]" merged to single register "w_buffer64[496]"
+    Info: Duplicate register "w_buffer64[506]" merged to single register "w_buffer64[496]"
+    Info: Duplicate register "w_buffer64[507]" merged to single register "w_buffer64[496]"
+    Info: Duplicate register "w_buffer64[508]" merged to single register "w_buffer64[496]"
+    Info: Duplicate register "w_buffer64[497]" merged to single register "w_buffer64[496]"
+    Info: Duplicate register "w_buffer64[509]" merged to single register "w_buffer64[496]"
+    Info: Duplicate register "w_buffer64[510]" merged to single register "w_buffer64[496]"
+    Info: Duplicate register "w_buffer64[511]" merged to single register "w_buffer64[496]"
+    Info: Duplicate register "w_buffer64[499]" merged to single register "w_buffer64[496]"
+    Info: Duplicate register "w_buffer64[500]" merged to single register "w_buffer64[496]"
+    Info: Duplicate register "w_buffer64[501]" merged to single register "w_buffer64[496]"
+    Info: Duplicate register "w_buffer64[503]" merged to single register "w_buffer64[498]"
+    Info: Duplicate register "w_data32[31][5]" merged to single register "w_data32[31][0]"
+    Info: Duplicate register "w_data32[31][7]" merged to single register "w_data32[31][1]"
+    Info: Duplicate register "w_data32[31][15]" merged to single register "w_data32[31][1]"
+    Info: Duplicate register "w_data32[31][14]" merged to single register "w_data32[31][1]"
+    Info: Duplicate register "w_data32[31][13]" merged to single register "w_data32[31][1]"
+    Info: Duplicate register "w_data32[31][12]" merged to single register "w_data32[31][1]"
+    Info: Duplicate register "w_data32[31][11]" merged to single register "w_data32[31][1]"
+    Info: Duplicate register "w_data32[31][6]" merged to single register "w_data32[31][1]"
+    Info: Duplicate register "w_data32[31][10]" merged to single register "w_data32[31][1]"
+    Info: Duplicate register "w_data32[31][9]" merged to single register "w_data32[31][1]"
+    Info: Duplicate register "w_data32[31][8]" merged to single register "w_data32[31][1]"
+    Info: Duplicate register "w_data32[31][4]" merged to single register "w_data32[31][1]"
+    Info: Duplicate register "w_data32[31][3]" merged to single register "w_data32[31][1]"
+    Info: Duplicate register "w_data32[31][2]" merged to single register "w_data32[31][1]"
+Warning: Inferred dual-clock RAM node "stack~16" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
+Info: Found 3 instances of uninferred RAM logic
+    Info: RAM logic "SENT_DATA" uninferred due to asynchronous read logic
+    Info: RAM logic "EP1_Buff" uninferred due to asynchronous read logic
+    Info: RAM logic "OTG_ESR" uninferred due to asynchronous read logic
+Warning (14130): Reduced register "w_buffer64[368]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[496]" with stuck data_in port to stuck value GND
+Info: Power-up level of register "w_buffer64[389]" is not specified -- using power-up level of High to minimize register
+Warning (14130): Reduced register "w_buffer64[389]" with stuck data_in port to stuck value VCC
+Info: Power-up level of register "w_buffer64[498]" is not specified -- using power-up level of High to minimize register
+Warning (14130): Reduced register "w_buffer64[498]" with stuck data_in port to stuck value VCC
+Warning (14130): Reduced register "w_data32[30][3]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[31][1]" with stuck data_in port to stuck value GND
+Info: Power-up level of register "w_data32[30][0]" is not specified -- using power-up level of High to minimize register
+Warning (14130): Reduced register "w_data32[30][0]" with stuck data_in port to stuck value VCC
+Info: Power-up level of register "w_data32[31][0]" is not specified -- using power-up level of High to minimize register
+Warning (14130): Reduced register "w_data32[31][0]" with stuck data_in port to stuck value VCC
+Warning (14130): Reduced register "w_buffer64[180]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[212]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[244]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[260]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[276]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[292]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[308]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[340]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[213]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[245]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[261]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[309]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[325]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[310]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[326]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[342]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[167]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[311]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[144]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[160]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[176]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[208]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[224]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[240]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[256]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[272]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[304]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[320]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[336]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[352]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[337]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[322]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[354]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[307]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[323]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[339]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[355]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[172]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[220]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[236]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[252]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[268]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[284]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[316]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[348]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[364]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[173]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[237]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[269]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[317]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[349]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[365]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[174]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[254]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[270]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[286]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[303]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[319]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[367]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[152]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[168]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[216]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[232]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[248]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[264]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[280]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[296]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[312]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[328]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[344]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[360]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[169]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[233]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[218]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[298]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[314]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[155]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[171]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[251]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[267]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[299]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[331]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[347]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[11][3]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[13][3]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[15][3]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[16][3]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[17][3]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[18][3]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[19][3]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[21][3]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[13][2]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[15][2]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[16][2]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[19][2]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[20][2]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[19][1]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[20][1]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[21][1]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[10][0]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[19][0]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[9][7]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[10][7]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[11][7]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[13][7]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[14][7]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[15][7]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[16][7]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[17][7]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[19][7]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[20][7]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[21][7]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[22][7]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[21][6]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[20][5]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[22][5]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[19][4]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[20][4]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[21][4]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[22][4]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[10][11]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[13][11]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[14][11]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[15][11]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[16][11]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[17][11]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[19][11]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[21][11]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[22][11]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[10][10]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[14][10]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[16][10]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[19][10]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[21][10]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[22][10]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[10][9]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[15][9]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[16][9]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[17][9]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[18][8]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[19][8]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[22][8]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[9][15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[10][15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[13][15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[14][15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[15][15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[16][15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[17][15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[18][15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[19][15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[20][15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[21][15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[22][15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[10][14]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[14][14]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[13][13]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[18][13]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[19][13]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[9][12]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[10][12]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[15][12]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[16][12]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[18][12]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[20][12]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[21][12]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[84]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[100]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[16]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[64]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[80]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[28]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[60]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[92]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[61]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[63]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[111]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[24]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[72]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[88]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[104]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[136]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[26]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[138]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[27]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[107]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_buffer64[139]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[5][3]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[6][3]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[1][7]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[4][7]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[5][7]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[1][11]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[3][11]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[5][11]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[3][10]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[3][8]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[6][8]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[1][15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[4][15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[5][15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[6][15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[8][15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[1][13]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[8][13]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[1][12]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[6][12]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "w_data32[8][12]" with stuck data_in port to stuck value GND
+Info: Power-up level of register "LEDG[7]~reg0" is not specified -- using power-up level of High to minimize register
+Warning (14130): Reduced register "LEDG[7]~reg0" with stuck data_in port to stuck value VCC
+Info: Duplicate registers merged to single register
+    Info: Duplicate register "w_buffer64[324]" merged to single register "w_buffer64[356]"
+    Info: Duplicate register "w_buffer64[357]" merged to single register "w_buffer64[356]"
+    Info: Duplicate register "w_buffer64[321]" merged to single register "w_buffer64[356]"
+    Info: Duplicate register "w_buffer64[353]" merged to single register "w_buffer64[356]"
+    Info: Duplicate register "w_buffer64[306]" merged to single register "w_buffer64[356]"
+    Info: Duplicate register "w_buffer64[338]" merged to single register "w_buffer64[356]"
+    Info: Duplicate register "w_buffer64[333]" merged to single register "w_buffer64[356]", power-up level changed
+    Info: Duplicate register "w_buffer64[351]" merged to single register "w_buffer64[356]", power-up level changed
+    Info: Duplicate register "w_buffer64[115]" merged to single register "w_buffer64[132]"
+    Info: Duplicate register "w_buffer64[131]" merged to single register "w_buffer64[132]"
+    Info: Duplicate register "w_buffer64[128]" merged to single register "w_buffer64[132]"
+    Info: Duplicate register "w_buffer64[112]" merged to single register "w_buffer64[132]"
+    Info: Duplicate register "w_buffer64[56]" merged to single register "w_buffer64[132]"
+    Info: Duplicate register "w_buffer64[120]" merged to single register "w_buffer64[132]"
+    Info: Duplicate register "w_buffer64[76]" merged to single register "w_buffer64[132]"
+    Info: Duplicate register "w_buffer64[124]" merged to single register "w_buffer64[132]"
+    Info: Duplicate register "w_buffer64[125]" merged to single register "w_buffer64[132]"
+    Info: Duplicate register "w_buffer64[134]" merged to single register "w_buffer64[132]"
+    Info: Duplicate register "w_buffer64[127]" merged to single register "w_buffer64[132]"
+    Info: Duplicate register "w_buffer64[121]" merged to single register "w_buffer64[132]"
+    Info: Duplicate register "w_buffer64[123]" merged to single register "w_buffer64[132]"
+    Info: Duplicate register "w_buffer64[110]" merged to single register "w_buffer64[132]"
+    Info: Duplicate register "w_buffer64[133]" merged to single register "w_buffer64[132]"
+    Info: Duplicate register "w_buffer64[200]" merged to single register "w_buffer64[148]"
+    Info: Duplicate register "w_buffer64[184]" merged to single register "w_buffer64[148]"
+    Info: Duplicate register "w_buffer64[287]" merged to single register "w_buffer64[148]"
+    Info: Duplicate register "w_buffer64[192]" merged to single register "w_buffer64[148]"
+    Info: Duplicate register "w_buffer64[239]" merged to single register "w_buffer64[148]"
+    Info: Duplicate register "w_buffer64[207]" merged to single register "w_buffer64[148]"
+    Info: Duplicate register "w_buffer64[191]" merged to single register "w_buffer64[148]"
+    Info: Duplicate register "w_buffer64[175]" merged to single register "w_buffer64[148]"
+    Info: Duplicate register "w_buffer64[222]" merged to single register "w_buffer64[148]"
+    Info: Duplicate register "w_buffer64[195]" merged to single register "w_buffer64[148]"
+    Info: Duplicate register "w_buffer64[189]" merged to single register "w_buffer64[148]"
+    Info: Duplicate register "w_buffer64[188]" merged to single register "w_buffer64[148]"
+    Info: Duplicate register "w_buffer64[204]" merged to single register "w_buffer64[148]"
+    Info: Duplicate register "w_buffer64[201]" merged to single register "w_buffer64[148]"
+    Info: Duplicate register "w_buffer64[186]" merged to single register "w_buffer64[148]"
+    Info: Duplicate register "w_buffer64[187]" merged to single register "w_buffer64[148]"
+    Info: Duplicate register "w_buffer64[206]" merged to single register "w_buffer64[148]"
+    Info: Duplicate register "w_buffer64[275]" merged to single register "w_buffer64[164]"
+    Info: Duplicate register "w_buffer64[215]" merged to single register "w_buffer64[164]"
+    Info: Duplicate register "w_buffer64[149]" merged to single register "w_buffer64[164]"
+    Info: Duplicate register "w_buffer64[165]" merged to single register "w_buffer64[164]"
+    Info: Duplicate register "w_buffer64[227]" merged to single register "w_buffer64[164]"
+    Info: Duplicate register "w_buffer64[199]" merged to single register "w_buffer64[196]"
+    Info: Duplicate register "w_buffer64[193]" merged to single register "w_buffer64[196]"
+    Info: Duplicate register "w_buffer64[246]" merged to single register "w_buffer64[196]"
+    Info: Duplicate register "w_buffer64[198]" merged to single register "w_buffer64[196]"
+    Info: Duplicate register "w_buffer64[197]" merged to single register "w_buffer64[196]"
+    Info: Duplicate register "w_buffer64[230]" merged to single register "w_buffer64[228]"
+    Info: Duplicate register "w_buffer64[258]" merged to single register "w_buffer64[228]"
+    Info: Duplicate register "w_buffer64[274]" merged to single register "w_buffer64[228]"
+    Info: Duplicate register "w_buffer64[247]" merged to single register "w_buffer64[228]"
+    Info: Duplicate register "w_buffer64[241]" merged to single register "w_buffer64[228]"
+    Info: Duplicate register "w_buffer64[214]" merged to single register "w_buffer64[228]"
+    Info: Duplicate register "w_buffer64[54]" merged to single register "w_buffer64[36]"
+    Info: Duplicate register "w_buffer64[49]" merged to single register "w_buffer64[36]"
+    Info: Duplicate register "w_buffer64[99]" merged to single register "w_buffer64[36]"
+    Info: Duplicate register "w_buffer64[71]" merged to single register "w_buffer64[52]"
+    Info: Duplicate register "w_buffer64[53]" merged to single register "w_buffer64[52]"
+    Info: Duplicate register "w_buffer64[33]" merged to single register "w_buffer64[37]"
+    Info: Duplicate register "w_buffer64[103]" merged to single register "w_buffer64[37]"
+    Info: Duplicate register "w_buffer64[39]" merged to single register "w_buffer64[37]"
+    Info: Duplicate register "w_buffer64[96]" merged to single register "w_buffer64[69]"
+    Info: Duplicate register "w_buffer64[48]" merged to single register "w_buffer64[69]"
+    Info: Duplicate register "w_buffer64[93]" merged to single register "w_buffer64[69]"
+    Info: Duplicate register "w_buffer64[40]" merged to single register "w_buffer64[69]"
+    Info: Duplicate register "w_buffer64[32]" merged to single register "w_buffer64[69]"
+    Info: Duplicate register "w_buffer64[44]" merged to single register "w_buffer64[69]"
+    Info: Duplicate register "w_buffer64[143]" merged to single register "w_buffer64[69]"
+    Info: Duplicate register "w_buffer64[35]" merged to single register "w_buffer64[69]"
+    Info: Duplicate register "w_buffer64[43]" merged to single register "w_buffer64[69]"
+    Info: Duplicate register "w_buffer64[75]" merged to single register "w_buffer64[69]"
+    Info: Duplicate register "w_buffer64[91]" merged to single register "w_buffer64[69]"
+    Info: Duplicate register "w_buffer64[86]" merged to single register "w_buffer64[69]"
+    Info: Duplicate register "w_buffer64[94]" merged to single register "w_buffer64[69]"
+    Info: Duplicate register "w_buffer64[78]" merged to single register "w_buffer64[69]"
+    Info: Duplicate register "w_buffer64[46]" merged to single register "w_buffer64[69]"
+    Info: Duplicate register "w_buffer64[98]" merged to single register "w_buffer64[101]"
+    Info: Duplicate register "w_buffer64[129]" merged to single register "w_buffer64[117]"
+    Info: Duplicate register "w_buffer64[135]" merged to single register "w_buffer64[117]"
+    Info: Duplicate register "w_buffer64[114]" merged to single register "w_buffer64[117]"
+    Info: Duplicate register "w_buffer64[194]" merged to single register "w_buffer64[181]"
+    Info: Duplicate register "w_buffer64[151]" merged to single register "w_buffer64[229]"
+    Info: Duplicate register "w_buffer64[291]" merged to single register "w_buffer64[293]"
+    Info: Duplicate register "w_buffer64[289]" merged to single register "w_buffer64[293]"
+    Info: Duplicate register "w_buffer64[363]" merged to single register "w_buffer64[341]"
+    Info: Duplicate register "w_buffer64[350]" merged to single register "w_buffer64[341]"
+    Info: Duplicate register "w_buffer64[334]" merged to single register "w_buffer64[341]"
+    Info: Duplicate register "w_buffer64[305]" merged to single register "w_buffer64[341]"
+    Info: Duplicate register "w_buffer64[343]" merged to single register "w_buffer64[341]"
+    Info: Duplicate register "w_buffer64[359]" merged to single register "w_buffer64[341]"
+    Info: Duplicate register "w_buffer64[358]" merged to single register "w_buffer64[341]"
+    Info: Duplicate register "w_buffer64[335]" merged to single register "w_buffer64[341]"
+    Info: Duplicate register "w_buffer64[383]" merged to single register "w_buffer64[369]", power-up level changed
+    Info: Duplicate register "w_buffer64[119]" merged to single register "w_buffer64[70]"
+    Info: Duplicate register "w_buffer64[97]" merged to single register "w_buffer64[102]"
+    Info: Duplicate register "w_buffer64[145]" merged to single register "w_buffer64[150]"
+    Info: Duplicate register "w_buffer64[209]" merged to single register "w_buffer64[150]"
+    Info: Duplicate register "w_buffer64[226]" merged to single register "w_buffer64[150]"
+    Info: Duplicate register "w_buffer64[242]" merged to single register "w_buffer64[150]"
+    Info: Duplicate register "w_buffer64[225]" merged to single register "w_buffer64[150]"
+    Info: Duplicate register "w_buffer64[177]" merged to single register "w_buffer64[150]"
+    Info: Duplicate register "w_buffer64[259]" merged to single register "w_buffer64[166]"
+    Info: Duplicate register "w_buffer64[163]" merged to single register "w_buffer64[166]"
+    Info: Duplicate register "w_buffer64[262]" merged to single register "w_buffer64[166]"
+    Info: Duplicate register "w_buffer64[147]" merged to single register "w_buffer64[182]"
+    Info: Duplicate register "w_buffer64[179]" merged to single register "w_buffer64[182]"
+    Info: Duplicate register "w_buffer64[211]" merged to single register "w_buffer64[182]"
+    Info: Duplicate register "w_buffer64[243]" merged to single register "w_buffer64[182]"
+    Info: Duplicate register "w_buffer64[288]" merged to single register "w_buffer64[294]"
+    Info: Duplicate register "w_buffer64[29]" merged to single register "w_buffer64[23]"
+    Info: Duplicate register "w_buffer64[51]" merged to single register "w_buffer64[55]"
+    Info: Duplicate register "w_buffer64[81]" merged to single register "w_buffer64[87]"
+    Info: Duplicate register "w_buffer64[83]" merged to single register "w_buffer64[87]"
+    Info: Duplicate register "w_buffer64[279]" merged to single register "w_buffer64[183]"
+    Info: Duplicate register "w_buffer64[210]" merged to single register "w_buffer64[263]"
+    Info: Duplicate register "w_buffer64[146]" merged to single register "w_buffer64[263]"
+    Info: Duplicate register "w_buffer64[162]" merged to single register "w_buffer64[263]"
+    Info: Duplicate register "w_buffer64[178]" merged to single register "w_buffer64[263]"
+    Info: Duplicate register "w_buffer64[34]" merged to single register "w_buffer64[65]"
+    Info: Duplicate register "w_buffer64[82]" merged to single register "w_buffer64[65]"
+    Info: Duplicate register "w_buffer64[50]" merged to single register "w_buffer64[65]"
+    Info: Duplicate register "w_buffer64[130]" merged to single register "w_buffer64[113]"
+    Info: Duplicate register "w_buffer64[273]" merged to single register "w_buffer64[161]"
+    Info: Duplicate register "w_buffer64[257]" merged to single register "w_buffer64[161]"
+    Info: Duplicate register "w_buffer64[141]" merged to single register "w_buffer64[108]"
+    Info: Duplicate register "w_buffer64[105]" merged to single register "w_buffer64[108]"
+    Info: Duplicate register "w_buffer64[109]" merged to single register "w_buffer64[108]"
+    Info: Duplicate register "w_buffer64[137]" merged to single register "w_buffer64[108]"
+    Info: Duplicate register "w_buffer64[58]" merged to single register "w_buffer64[108]"
+    Info: Duplicate register "w_buffer64[106]" merged to single register "w_buffer64[108]"
+    Info: Duplicate register "w_buffer64[62]" merged to single register "w_buffer64[108]"
+    Info: Duplicate register "w_buffer64[59]" merged to single register "w_buffer64[108]"
+    Info: Duplicate register "w_buffer64[142]" merged to single register "w_buffer64[108]"
+    Info: Duplicate register "w_buffer64[140]" merged to single register "w_buffer64[108]"
+    Info: Duplicate register "w_buffer64[301]" merged to single register "w_buffer64[300]"
+    Info: Duplicate register "w_buffer64[297]" merged to single register "w_buffer64[300]"
+    Info: Duplicate register "w_buffer64[329]" merged to single register "w_buffer64[332]"
+    Info: Duplicate register "w_buffer64[315]" merged to single register "w_buffer64[332]"
+    Info: Duplicate register "w_buffer64[345]" merged to single register "w_buffer64[332]"
+    Info: Duplicate register "w_buffer64[313]" merged to single register "w_buffer64[332]"
+    Info: Duplicate register "w_buffer64[366]" merged to single register "w_buffer64[332]"
+    Info: Duplicate register "w_buffer64[330]" merged to single register "w_buffer64[332]"
+    Info: Duplicate register "w_buffer64[362]" merged to single register "w_buffer64[332]"
+    Info: Duplicate register "w_buffer64[346]" merged to single register "w_buffer64[332]"
+    Info: Duplicate register "w_buffer64[361]" merged to single register "w_buffer64[332]"
+    Info: Duplicate register "w_buffer64[318]" merged to single register "w_buffer64[332]"
+    Info: Duplicate register "w_buffer64[158]" merged to single register "w_buffer64[156]"
+    Info: Duplicate register "w_buffer64[250]" merged to single register "w_buffer64[156]"
+    Info: Duplicate register "w_buffer64[266]" merged to single register "w_buffer64[156]"
+    Info: Duplicate register "w_buffer64[282]" merged to single register "w_buffer64[156]"
+    Info: Duplicate register "w_buffer64[253]" merged to single register "w_buffer64[156]"
+    Info: Duplicate register "w_buffer64[219]" merged to single register "w_buffer64[156]"
+    Info: Duplicate register "w_buffer64[235]" merged to single register "w_buffer64[156]"
+    Info: Duplicate register "w_buffer64[159]" merged to single register "w_buffer64[156]"
+    Info: Duplicate register "w_buffer64[255]" merged to single register "w_buffer64[156]"
+    Info: Duplicate register "w_buffer64[238]" merged to single register "w_buffer64[156]"
+    Info: Duplicate register "w_buffer64[265]" merged to single register "w_buffer64[156]"
+    Info: Duplicate register "w_buffer64[281]" merged to single register "w_buffer64[156]"
+    Info: Duplicate register "w_buffer64[283]" merged to single register "w_buffer64[156]"
+    Info: Duplicate register "w_buffer64[154]" merged to single register "w_buffer64[156]"
+    Info: Duplicate register "w_buffer64[170]" merged to single register "w_buffer64[156]"
+    Info: Duplicate register "w_buffer64[217]" merged to single register "w_buffer64[156]"
+    Info: Duplicate register "w_buffer64[234]" merged to single register "w_buffer64[156]"
+    Info: Duplicate register "w_buffer64[153]" merged to single register "w_buffer64[156]"
+    Info: Duplicate register "w_buffer64[77]" merged to single register "w_buffer64[45]"
+    Info: Duplicate register "w_buffer64[95]" merged to single register "w_buffer64[45]"
+    Info: Duplicate register "w_buffer64[41]" merged to single register "w_buffer64[45]"
+    Info: Duplicate register "w_buffer64[73]" merged to single register "w_buffer64[45]"
+    Info: Duplicate register "w_buffer64[89]" merged to single register "w_buffer64[45]"
+    Info: Duplicate register "w_buffer64[74]" merged to single register "w_buffer64[45]"
+    Info: Duplicate register "w_buffer64[90]" merged to single register "w_buffer64[45]"
+    Info: Duplicate register "w_buffer64[42]" merged to single register "w_buffer64[45]"
+    Info: Duplicate register "w_buffer64[185]" merged to single register "w_buffer64[157]"
+    Info: Duplicate register "w_buffer64[271]" merged to single register "w_buffer64[157]"
+    Info: Duplicate register "w_buffer64[285]" merged to single register "w_buffer64[157]"
+    Info: Duplicate register "w_buffer64[203]" merged to single register "w_buffer64[157]"
+    Info: Duplicate register "w_buffer64[221]" merged to single register "w_buffer64[157]"
+    Info: Duplicate register "w_buffer64[205]" merged to single register "w_buffer64[157]"
+    Info: Duplicate register "w_buffer64[223]" merged to single register "w_buffer64[157]"
+    Info: Duplicate register "w_buffer64[249]" merged to single register "w_buffer64[157]"
+    Info: Duplicate register "w_buffer64[190]" merged to single register "w_buffer64[157]"
+    Info: Duplicate register "w_buffer64[202]" merged to single register "w_buffer64[157]"
+    Info: Duplicate register "w_buffer64[25]" merged to single register "w_buffer64[31]"
+    Info: Duplicate register "w_buffer64[79]" merged to single register "w_buffer64[47]"
+    Info: Duplicate register "w_buffer64[57]" merged to single register "w_buffer64[47]"
+    Info: Duplicate register "w_data32[20][3]" merged to single register "w_data32[22][3]"
+    Info: Duplicate register "w_data32[22][2]" merged to single register "w_data32[22][3]"
+    Info: Duplicate register "w_data32[20][6]" merged to single register "w_data32[22][3]"
+    Info: Duplicate register "w_data32[22][6]" merged to single register "w_data32[22][3]"
+    Info: Duplicate register "w_data32[19][5]" merged to single register "w_data32[22][3]"
+    Info: Duplicate register "w_data32[21][5]" merged to single register "w_data32[22][3]"
+    Info: Duplicate register "w_data32[20][10]" merged to single register "w_data32[22][3]", power-up level changed
+    Info: Duplicate register "w_data32[21][8]" merged to single register "w_data32[22][3]", power-up level changed
+    Info: Duplicate register "w_data32[7][4]" merged to single register "w_data32[8][3]"
+    Info: Duplicate register "w_data32[8][4]" merged to single register "w_data32[8][3]"
+    Info: Duplicate register "w_data32[8][7]" merged to single register "w_data32[8][3]"
+    Info: Duplicate register "w_data32[7][7]" merged to single register "w_data32[8][3]"
+    Info: Duplicate register "w_data32[3][15]" merged to single register "w_data32[8][3]"
+    Info: Duplicate register "w_data32[7][15]" merged to single register "w_data32[8][3]"
+    Info: Duplicate register "w_data32[4][11]" merged to single register "w_data32[8][3]"
+    Info: Duplicate register "w_data32[7][11]" merged to single register "w_data32[8][3]"
+    Info: Duplicate register "w_data32[7][10]" merged to single register "w_data32[8][3]"
+    Info: Duplicate register "w_data32[8][1]" merged to single register "w_data32[8][3]"
+    Info: Duplicate register "w_data32[7][8]" merged to single register "w_data32[8][3]"
+    Info: Duplicate register "w_data32[7][14]" merged to single register "w_data32[8][3]"
+    Info: Duplicate register "w_data32[7][12]" merged to single register "w_data32[8][3]"
+    Info: Duplicate register "w_data32[6][9]" merged to single register "w_data32[8][3]"
+    Info: Duplicate register "w_data32[8][2]" merged to single register "w_data32[8][3]"
+    Info: Duplicate register "w_data32[12][15]" merged to single register "w_data32[9][3]"
+    Info: Duplicate register "w_data32[11][15]" merged to single register "w_data32[9][3]"
+    Info: Duplicate register "w_data32[17][8]" merged to single register "w_data32[9][3]"
+    Info: Duplicate register "w_data32[12][7]" merged to single register "w_data32[9][3]"
+    Info: Duplicate register "w_data32[14][8]" merged to single register "w_data32[9][3]"
+    Info: Duplicate register "w_data32[12][8]" merged to single register "w_data32[9][3]"
+    Info: Duplicate register "w_data32[11][8]" merged to single register "w_data32[9][3]"
+    Info: Duplicate register "w_data32[10][8]" merged to single register "w_data32[9][3]"
+    Info: Duplicate register "w_data32[13][9]" merged to single register "w_data32[9][3]"
+    Info: Duplicate register "w_data32[12][4]" merged to single register "w_data32[9][3]"
+    Info: Duplicate register "w_data32[11][10]" merged to single register "w_data32[9][3]"
+    Info: Duplicate register "w_data32[11][11]" merged to single register "w_data32[9][3]"
+    Info: Duplicate register "w_data32[12][11]" merged to single register "w_data32[9][3]"
+    Info: Duplicate register "w_data32[12][14]" merged to single register "w_data32[9][3]"
+    Info: Duplicate register "w_data32[11][13]" merged to single register "w_data32[9][3]"
+    Info: Duplicate register "w_data32[11][12]" merged to single register "w_data32[9][3]"
+    Info: Duplicate register "w_data32[12][9]" merged to single register "w_data32[9][3]"
+    Info: Duplicate register "w_data32[17][4]" merged to single register "w_data32[10][3]"
+    Info: Duplicate register "w_data32[13][0]" merged to single register "w_data32[10][3]"
+    Info: Duplicate register "w_data32[9][2]" merged to single register "w_data32[10][3]"
+    Info: Duplicate register "w_data32[10][2]" merged to single register "w_data32[10][3]"
+    Info: Duplicate register "w_data32[14][4]" merged to single register "w_data32[10][3]"
+    Info: Duplicate register "w_data32[12][0]" merged to single register "w_data32[12][3]"
+    Info: Duplicate register "w_data32[12][6]" merged to single register "w_data32[12][3]"
+    Info: Duplicate register "w_data32[15][1]" merged to single register "w_data32[12][3]"
+    Info: Duplicate register "w_data32[12][1]" merged to single register "w_data32[12][3]"
+    Info: Duplicate register "w_data32[12][2]" merged to single register "w_data32[12][3]"
+    Info: Duplicate register "w_data32[14][1]" merged to single register "w_data32[14][3]"
+    Info: Duplicate register "w_data32[16][5]" merged to single register "w_data32[14][3]"
+    Info: Duplicate register "w_data32[17][5]" merged to single register "w_data32[14][3]"
+    Info: Duplicate register "w_data32[15][0]" merged to single register "w_data32[14][3]"
+    Info: Duplicate register "w_data32[15][6]" merged to single register "w_data32[14][3]"
+    Info: Duplicate register "w_data32[13][1]" merged to single register "w_data32[14][3]"
+    Info: Duplicate register "w_data32[3][1]" merged to single register "w_data32[2][3]"
+    Info: Duplicate register "w_data32[3][6]" merged to single register "w_data32[2][3]"
+    Info: Duplicate register "w_data32[6][4]" merged to single register "w_data32[2][3]"
+    Info: Duplicate register "w_data32[4][0]" merged to single register "w_data32[3][3]"
+    Info: Duplicate register "w_data32[3][2]" merged to single register "w_data32[3][3]"
+    Info: Duplicate register "w_data32[2][6]" merged to single register "w_data32[2][2]"
+    Info: Duplicate register "w_data32[6][0]" merged to single register "w_data32[2][2]"
+    Info: Duplicate register "w_data32[2][0]" merged to single register "w_data32[2][2]"
+    Info: Duplicate register "w_data32[6][7]" merged to single register "w_data32[4][2]"
+    Info: Duplicate register "w_data32[3][7]" merged to single register "w_data32[4][2]"
+    Info: Duplicate register "w_data32[5][10]" merged to single register "w_data32[4][2]"
+    Info: Duplicate register "w_data32[2][15]" merged to single register "w_data32[4][2]"
+    Info: Duplicate register "w_data32[2][7]" merged to single register "w_data32[4][2]"
+    Info: Duplicate register "w_data32[2][11]" merged to single register "w_data32[4][2]"
+    Info: Duplicate register "w_data32[8][8]" merged to single register "w_data32[4][2]"
+    Info: Duplicate register "w_data32[2][4]" merged to single register "w_data32[4][2]"
+    Info: Duplicate register "w_data32[2][12]" merged to single register "w_data32[4][2]"
+    Info: Duplicate register "w_data32[4][12]" merged to single register "w_data32[4][2]"
+    Info: Duplicate register "w_data32[5][12]" merged to single register "w_data32[4][2]"
+    Info: Duplicate register "w_data32[5][1]" merged to single register "w_data32[4][2]"
+    Info: Duplicate register "w_data32[5][9]" merged to single register "w_data32[4][2]"
+    Info: Duplicate register "w_data32[4][9]" merged to single register "w_data32[4][2]"
+    Info: Duplicate register "w_data32[2][9]" merged to single register "w_data32[4][2]"
+    Info: Duplicate register "w_data32[6][5]" merged to single register "w_data32[6][2]"
+    Info: Duplicate register "w_data32[8][6]" merged to single register "w_data32[7][2]"
+    Info: Duplicate register "w_data32[8][0]" merged to single register "w_data32[7][2]"
+    Info: Duplicate register "w_data32[7][5]" merged to single register "w_data32[7][2]"
+    Info: Duplicate register "w_data32[12][5]" merged to single register "w_data32[11][2]"
+    Info: Duplicate register "w_data32[9][0]" merged to single register "w_data32[14][2]"
+    Info: Duplicate register "w_data32[18][4]" merged to single register "w_data32[18][2]"
+    Info: Duplicate register "w_data32[18][6]" merged to single register "w_data32[18][2]"
+    Info: Duplicate register "w_data32[22][12]" merged to single register "w_data32[21][2]"
+    Info: Duplicate register "w_data32[21][9]" merged to single register "w_data32[21][2]"
+    Info: Duplicate register "w_data32[20][9]" merged to single register "w_data32[21][2]"
+    Info: Duplicate register "w_data32[19][6]" merged to single register "w_data32[21][2]"
+    Info: Duplicate register "w_data32[21][0]" merged to single register "w_data32[21][2]"
+    Info: Duplicate register "w_data32[22][0]" merged to single register "w_data32[21][2]"
+    Info: Duplicate register "w_data32[22][1]" merged to single register "w_data32[21][2]"
+    Info: Duplicate register "w_data32[20][8]" merged to single register "w_data32[21][2]"
+    Info: Duplicate register "w_data32[30][1]" merged to single register "w_data32[30][5]", power-up level changed
+    Info: Duplicate register "w_data32[7][0]" merged to single register "w_data32[4][1]"
+    Info: Duplicate register "w_data32[6][6]" merged to single register "w_data32[6][1]"
+    Info: Duplicate register "w_data32[9][6]" merged to single register "w_data32[9][1]"
+    Info: Duplicate register "w_data32[13][6]" merged to single register "w_data32[9][1]"
+    Info: Duplicate register "w_data32[14][5]" merged to single register "w_data32[9][1]"
+    Info: Duplicate register "w_data32[15][5]" merged to single register "w_data32[9][1]"
+    Info: Duplicate register "w_data32[14][6]" merged to single register "w_data32[9][1]"
+    Info: Duplicate register "w_data32[11][6]" merged to single register "w_data32[9][1]"
+    Info: Duplicate register "w_data32[16][4]" merged to single register "w_data32[10][1]"
+    Info: Duplicate register "w_data32[10][4]" merged to single register "w_data32[10][1]"
+    Info: Duplicate register "w_data32[16][1]" merged to single register "w_data32[10][1]"
+    Info: Duplicate register "w_data32[9][4]" merged to single register "w_data32[11][1]"
+    Info: Duplicate register "w_data32[11][4]" merged to single register "w_data32[11][1]"
+    Info: Duplicate register "w_data32[13][4]" merged to single register "w_data32[11][1]"
+    Info: Duplicate register "w_data32[15][4]" merged to single register "w_data32[11][1]"
+    Info: Duplicate register "w_data32[18][7]" merged to single register "w_data32[18][1]"
+    Info: Duplicate register "w_data32[1][10]" merged to single register "w_data32[1][0]"
+    Info: Duplicate register "w_data32[3][4]" merged to single register "w_data32[3][0]"
+    Info: Duplicate register "w_data32[5][6]" merged to single register "w_data32[5][0]"
+    Info: Duplicate register "w_data32[5][4]" merged to single register "w_data32[5][0]"
+    Info: Duplicate register "w_data32[17][0]" merged to single register "w_data32[11][0]"
+    Info: Duplicate register "w_data32[13][5]" merged to single register "w_data32[16][0]"
+    Info: Duplicate register "w_data32[9][5]" merged to single register "w_data32[16][0]"
+    Info: Duplicate register "w_data32[10][5]" merged to single register "w_data32[16][0]"
+    Info: Duplicate register "w_data32[11][5]" merged to single register "w_data32[16][0]"
+    Info: Duplicate register "w_data32[2][5]" merged to single register "w_data32[4][6]"
+    Info: Duplicate register "w_data32[5][5]" merged to single register "w_data32[4][6]"
+    Info: Duplicate register "w_data32[3][5]" merged to single register "w_data32[4][6]"
+    Info: Duplicate register "w_data32[8][5]" merged to single register "w_data32[7][6]"
+    Info: Duplicate register "w_data32[17][6]" merged to single register "w_data32[10][6]"
+    Info: Duplicate register "w_data32[16][6]" merged to single register "w_data32[10][6]"
+    Info: Duplicate register "w_data32[8][10]" merged to single register "w_data32[6][11]"
+    Info: Duplicate register "w_data32[6][14]" merged to single register "w_data32[6][11]"
+    Info: Duplicate register "w_data32[6][10]" merged to single register "w_data32[6][11]"
+    Info: Duplicate register "w_data32[8][14]" merged to single register "w_data32[6][11]"
+    Info: Duplicate register "w_data32[3][13]" merged to single register "w_data32[6][11]"
+    Info: Duplicate register "w_data32[6][13]" merged to single register "w_data32[6][11]"
+    Info: Duplicate register "w_data32[3][9]" merged to single register "w_data32[6][11]"
+    Info: Duplicate register "w_data32[3][12]" merged to single register "w_data32[6][11]"
+    Info: Duplicate register "w_data32[8][9]" merged to single register "w_data32[6][11]"
+    Info: Duplicate register "w_data32[8][11]" merged to single register "w_data32[6][11]"
+    Info: Duplicate register "w_data32[18][10]" merged to single register "w_data32[18][11]"
+    Info: Duplicate register "w_data32[18][14]" merged to single register "w_data32[18][11]"
+    Info: Duplicate register "w_data32[20][14]" merged to single register "w_data32[20][11]"
+    Info: Duplicate register "w_data32[19][12]" merged to single register "w_data32[20][11]"
+    Info: Duplicate register "w_data32[21][14]" merged to single register "w_data32[20][11]"
+    Info: Duplicate register "w_data32[19][14]" merged to single register "w_data32[20][11]"
+    Info: Duplicate register "w_data32[22][9]" merged to single register "w_data32[20][11]"
+    Info: Duplicate register "w_data32[20][13]" merged to single register "w_data32[20][11]"
+    Info: Duplicate register "w_data32[22][13]" merged to single register "w_data32[20][11]"
+    Info: Duplicate register "w_data32[21][13]" merged to single register "w_data32[20][11]"
+    Info: Duplicate register "w_data32[22][14]" merged to single register "w_data32[20][11]"
+    Info: Duplicate register "w_data32[19][9]" merged to single register "w_data32[20][11]"
+    Info: Duplicate register "w_data32[9][9]" merged to single register "w_data32[9][11]"
+    Info: Duplicate register "w_data32[15][13]" merged to single register "w_data32[9][11]"
+    Info: Duplicate register "w_data32[16][13]" merged to single register "w_data32[9][11]"
+    Info: Duplicate register "w_data32[17][13]" merged to single register "w_data32[9][11]"
+    Info: Duplicate register "w_data32[15][10]" merged to single register "w_data32[9][11]"
+    Info: Duplicate register "w_data32[13][12]" merged to single register "w_data32[9][11]"
+    Info: Duplicate register "w_data32[14][12]" merged to single register "w_data32[9][11]"
+    Info: Duplicate register "w_data32[9][8]" merged to single register "w_data32[9][11]"
+    Info: Duplicate register "w_data32[15][8]" merged to single register "w_data32[9][11]"
+    Info: Duplicate register "w_data32[14][9]" merged to single register "w_data32[9][11]"
+    Info: Duplicate register "w_data32[16][14]" merged to single register "w_data32[9][11]"
+    Info: Duplicate register "w_data32[17][14]" merged to single register "w_data32[9][11]"
+    Info: Duplicate register "w_data32[17][12]" merged to single register "w_data32[9][11]"
+    Info: Duplicate register "w_data32[9][13]" merged to single register "w_data32[9][11]"
+    Info: Duplicate register "w_data32[10][13]" merged to single register "w_data32[9][11]"
+    Info: Duplicate register "w_data32[13][14]" merged to single register "w_data32[9][11]"
+    Info: Duplicate register "w_data32[14][13]" merged to single register "w_data32[9][11]"
+    Info: Duplicate register "w_data32[9][14]" merged to single register "w_data32[9][11]"
+    Info: Duplicate register "w_data32[4][10]" merged to single register "w_data32[2][10]"
+    Info: Duplicate register "w_data32[5][8]" merged to single register "w_data32[2][10]"
+    Info: Duplicate register "w_data32[2][14]" merged to single register "w_data32[2][10]"
+    Info: Duplicate register "w_data32[4][14]" merged to single register "w_data32[2][10]"
+    Info: Duplicate register "w_data32[5][14]" merged to single register "w_data32[2][10]"
+    Info: Duplicate register "w_data32[4][13]" merged to single register "w_data32[2][10]"
+    Info: Duplicate register "w_data32[5][13]" merged to single register "w_data32[2][10]"
+    Info: Duplicate register "w_data32[2][13]" merged to single register "w_data32[2][10]"
+    Info: Duplicate register "w_data32[11][14]" merged to single register "w_data32[9][10]"
+    Info: Duplicate register "w_data32[16][8]" merged to single register "w_data32[9][10]"
+    Info: Duplicate register "w_data32[17][10]" merged to single register "w_data32[9][10]"
+    Info: Duplicate register "w_data32[12][12]" merged to single register "w_data32[9][10]"
+    Info: Duplicate register "w_data32[13][10]" merged to single register "w_data32[9][10]"
+    Info: Duplicate register "w_data32[12][10]" merged to single register "w_data32[9][10]"
+    Info: Duplicate register "w_data32[13][8]" merged to single register "w_data32[9][10]"
+    Info: Duplicate register "w_data32[15][14]" merged to single register "w_data32[9][10]"
+    Info: Duplicate register "w_data32[11][9]" merged to single register "w_data32[9][10]"
+    Info: Duplicate register "w_data32[12][13]" merged to single register "w_data32[9][10]"
+    Info: Duplicate register "w_data32[1][14]" merged to single register "w_data32[1][8]"
+    Info: Duplicate register "w_data32[4][8]" merged to single register "w_data32[2][8]"
+    Info: Duplicate register "w_data32[3][14]" merged to single register "w_data32[2][8]"
+Info: State machine "|bus_as_cpu|e_state" contains 3 states
+Info: Selected Auto state machine encoding method for state machine "|bus_as_cpu|e_state"
+Info: Encoding result for state machine "|bus_as_cpu|e_state"
+    Info: Completed encoding using 3 state bits
+        Info: Encoded state bit "e_state.configured"
+        Info: Encoded state bit "e_state.address"
+        Info: Encoded state bit "e_state.default"
+    Info: State "|bus_as_cpu|e_state.default" uses code string "000"
+    Info: State "|bus_as_cpu|e_state.address" uses code string "011"
+    Info: State "|bus_as_cpu|e_state.configured" uses code string "101"
+Info: Inferred 1 megafunctions from design logic
+    Info: Inferred altsyncram megafunction from the following design logic: "stack~16" 
+        Info: Parameter OPERATION_MODE set to DUAL_PORT
+        Info: Parameter WIDTH_A set to 12
+        Info: Parameter WIDTHAD_A set to 5
+        Info: Parameter NUMWORDS_A set to 32
+        Info: Parameter WIDTH_B set to 12
+        Info: Parameter WIDTHAD_B set to 5
+        Info: Parameter NUMWORDS_B set to 32
+        Info: Parameter ADDRESS_ACLR_A set to NONE
+        Info: Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info: Parameter ADDRESS_ACLR_B set to NONE
+        Info: Parameter OUTDATA_ACLR_B set to NONE
+        Info: Parameter ADDRESS_REG_B set to CLOCK1
+        Info: Parameter INDATA_ACLR_A set to NONE
+        Info: Parameter WRCONTROL_ACLR_A set to NONE
+        Info: Parameter RAM_BLOCK_TYPE set to AUTO
+Info: Found 1 design units, including 1 entities, in source file ../../../../../altera/72/quartus/libraries/megafunctions/altsyncram.tdf
+    Info: Found entity 1: altsyncram
+Info: Elaborated megafunction instantiation "altsyncram:stack_rtl_0"
+Info: Found 1 design units, including 1 entities, in source file db/altsyncram_3se1.tdf
+    Info: Found entity 1: altsyncram_3se1
+Info: Duplicate registers merged to single register
+    Info: Duplicate register "w_buffer64[332]" merged to single register "w_buffer64[327]", power-up level changed
+    Info: Duplicate register "w_data32[20][11]" merged to single register "w_data32[20][0]", power-up level changed
+Warning: Output pins are stuck at VCC or GND
+    Warning (13410): Pin "OTG_ADDR[1]" stuck at VCC
+    Warning (13410): Pin "OTG_FSPEED" stuck at GND
+    Warning (13410): Pin "OTG_DACK0_N" stuck at VCC
+    Warning (13410): Pin "OTG_DACK1_N" stuck at VCC
+    Warning (13410): Pin "LEDG[2]" stuck at VCC
+    Warning (13410): Pin "LEDG[3]" stuck at GND
+    Warning (13410): Pin "LEDG[4]" stuck at GND
+    Warning (13410): Pin "LEDG[5]" stuck at GND
+    Warning (13410): Pin "LEDG[6]" stuck at GND
+    Warning (13410): Pin "LEDG[7]" stuck at VCC
+Info: 142 registers lost all their fanouts during netlist optimizations. The first 100 are displayed below.
+    Info: Register "OTG_ESR~43" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~45" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~47" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~49" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~51" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~53" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~55" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~57" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~59" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~61" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~63" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~65" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~67" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~69" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~71" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~73" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~75" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~77" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~79" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~81" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~83" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~85" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~87" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~89" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~91" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~93" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~95" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~97" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~99" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~101" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~103" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~105" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~107" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~109" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~111" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~113" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~115" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~117" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~119" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~121" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~123" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~125" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~127" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~129" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~131" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~133" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~135" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~137" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~139" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~141" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~143" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~145" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~147" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~149" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~151" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~153" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~155" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~157" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~159" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~161" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~163" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~165" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~167" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~169" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~171" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~173" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~175" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~177" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~179" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~181" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~183" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~185" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~187" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~189" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~191" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~193" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~195" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~197" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~199" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~201" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~203" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~205" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~207" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~209" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~211" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~213" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~215" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~217" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~219" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~221" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~223" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~225" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~227" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~229" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~231" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~233" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~235" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~237" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~239" lost all its fanouts during netlist optimizations.
+    Info: Register "OTG_ESR~241" lost all its fanouts during netlist optimizations.
+    Info: List truncated at 100 items
+Warning: Design contains 8 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "OTG_INT0"
+    Warning (15610): No output dependent on input pin "OTG_DREQ0"
+    Warning (15610): No output dependent on input pin "OTG_DREQ1"
+    Warning (15610): No output dependent on input pin "SW[2]"
+    Warning (15610): No output dependent on input pin "SW[3]"
+    Warning (15610): No output dependent on input pin "SW[4]"
+    Warning (15610): No output dependent on input pin "SW[5]"
+    Warning (15610): No output dependent on input pin "SW[6]"
+Info: Implemented 6484 device resources after synthesis - the final resource count might be different
+    Info: Implemented 27 input pins
+    Info: Implemented 93 output pins
+    Info: Implemented 16 bidirectional pins
+    Info: Implemented 6336 logic cells
+    Info: Implemented 12 RAM segments
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 248 warnings
+    Info: Allocated 219 megabytes of memory during processing
+    Info: Processing ended: Sun Jun 22 00:04:31 2008
+    Info: Elapsed time: 00:04:09
+
+

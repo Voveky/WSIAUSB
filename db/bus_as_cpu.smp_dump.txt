@@ -1,0 +1,6 @@
+
+State Machine - |bus_as_cpu|e_state
+Name e_state.configured e_state.address e_state.default 
+e_state.default 0 0 0 
+e_state.address 0 1 1 
+e_state.configured 1 0 1 
